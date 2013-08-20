@@ -15,38 +15,39 @@
 Route::controller('account','AccountController' );
 //Route::get('/', 'HomeController@showIndex');
 
-Route::get('/test', function(){
-	$user = User::find(1);
-	var_dump($user->username);
-    //return 'Hello World';
-    });
-
-
-Route::get('/', function()
-{
-    return View::make('connexion');
+// Appel direct depuis l'URL
+Route::get('login', function() {
+    return View::make('login');
 });
 
-Route::get('/', array('before' => 'auth', function()
-{
-    echo 'Maintenant vous êtes sur le site '.Auth::user()->username;
-}));
- 
-Route::get('login', array('as' => 'login', 'before' => 'guest', function()
-{
-    return View::make('connexion');
-}));
+// Appel depuis un formulaire
+Route::post('login', function() {
+    // get POST data
+    $userdata = array(
+        'username'      => Input::get('username'),
+        'password'      => Input::get('password')
+    );
 
-Route::post('connexion', function()
-{
-    $nom = Input::get('nom');
-    $passe = Input::get('password');
- 
-    if(Auth::attempt(array('username' => $nom, 'password' => $passe)))
-        echo 'Vous êtes maintenant connecté '.Auth::user()->username;
+    if ( Auth::attempt($userdata) )
+    {
+        // we are now logged in, go to home
+        return Redirect::to('home');
+    }
     else
-        //echo 'Echec de la connexion';
-        return View::make('connexion');
+    {
+        // auth failure! lets go back to the login
+        return Redirect::to('login')
+            ->with('login_errors', true);
+        // pass any error notification you want
+        // i like to do it this way :)
+    }
 });
 
+Route::get('logout', function() {
+    Auth::logout();
+    return Redirect::to('login');
+});
 
+Route::get('home', array('before' => 'auth', 'do' => function() {
+    return View::make('home');
+}));
