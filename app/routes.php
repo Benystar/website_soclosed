@@ -41,6 +41,8 @@ Route::post('login', function() {
         // pass any error notification you want
         // i like to do it this way :)
     }
+
+    
 });
 
 Route::get('logout', function() {
@@ -49,5 +51,6 @@ Route::get('logout', function() {
 });
 
 Route::get('home', array('before' => 'auth', 'do' => function() {
+
     return View::make('home');
 }));
