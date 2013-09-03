@@ -68,5 +68,16 @@ Route::get('subscribe', function() {
     return View::make('subscribe');
 });
 
+Route::get('create_sale', array('before' => 'auth', 'do' => function() {
+   
+    return View::make('sale/create_sale_describe');
+}));
+
+
+/***********************************************
+    Routes vers les contrôleurs
+************************************************/
 // Mandatory when you call a controller from a form
+
 Route::post('subscribe', 'SubscribeUserController@insertUser');
+Route::post('create_sale', 'SaleController@insertSale');
