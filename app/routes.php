@@ -12,16 +12,20 @@
 */
 
 
-Route::controller('account','AccountController' );
-//Route::get('/', 'HomeController@showIndex');
+// Appel direct depuis l'URL
+/*Route::get('/', function() {
+    return View::make('login');
+});*/
 
 // Appel direct depuis l'URL
 Route::get('login', function() {
+   
     return View::make('login');
 });
 
 // Appel depuis un formulaire
 Route::post('login', function() {
+    
     // get POST data
     $userdata = array(
         'username'      => Input::get('username'),
@@ -29,12 +33,15 @@ Route::post('login', function() {
     );
 
     if ( Auth::attempt($userdata) )
-    {
+    {        
         // we are now logged in, go to home
+
+        //return Redirect::intended('home');
         return Redirect::to('home');
     }
     else
     {
+
         // auth failure! lets go back to the login
         return Redirect::to('login')
             ->with('login_errors', true);
@@ -54,3 +61,12 @@ Route::get('home', array('before' => 'auth', 'do' => function() {
 
     return View::make('home');
 }));
+
+
+Route::get('subscribe', function() {
+   
+    return View::make('subscribe');
+});
+
+// Mandatory when you call a controller from a form
+Route::post('subscribe', 'SubscribeUserController@insertUser');
