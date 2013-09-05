@@ -23,32 +23,30 @@ class SaleController extends BaseController {
 		// Check if the form validates with success.
 		//
 		if ($validator->passes())
-		{
-			// Create the user.
+		{			
+			 $date = DateTime::createFromFormat('j-m-Y', Input::get('sale_date'));
+			
+			// Create the sale.
 			//
 			$sale 				= new Sale;
 			$sale->name 		= Input::get('sale_name');
-			$sale->description  = Input::get('sale_description'); 
-			$sale->sale_date   	= Input::get('sale_date'));
+			$sale->description  = Input::get('sale_description'); 			
+			$sale->sale_date   	= $date->format('Y-m-d 00:00:00');			
 			$sale->save();
-			
-		    $saledata = array(
-		        'sale_name'      		=> Input::get('sale_name');
-		        'sale_description'      => Input::get('sale_description'); 
-		        'sale_date'				=> Input::get('sale_date');
-		    );
-
-    
-			if(Auth::attempt($saledata)) {
-				return Redirect::to('sale/add_item');
-			}			
+					      
+			return Redirect::to('create_sale_add_item')->with('sale', $inputs);				
 		}
 
 		// Something went wrong.
 		//
-		return Redirect::to('sale_create')->withInput($inputs)->withErrors($validator->getMessageBag());
+		return Redirect::to('create_sale')->withInput($inputs)->withErrors($validator->getMessageBag());
 		//
 		
+	}
+
+	public function addItem(){
+
+		return Redirect::to('create_sale_add_item');
 	}
 
 }

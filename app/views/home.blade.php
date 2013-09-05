@@ -1,8 +1,6 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="header">   
-</div>
 
 <div class="content">	
     <div class="row-fluid">

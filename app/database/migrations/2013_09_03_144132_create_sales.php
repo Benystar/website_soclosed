@@ -16,6 +16,7 @@ class CreateSales extends Migration {
     		$table->string('name', 128);
     		$table->text('description');
     		$table->dateTime('sale_date');
+    		$table->timestamps(); // Adds created_at and updated_at columns
         });
 	}
 
