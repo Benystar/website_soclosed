@@ -34,7 +34,9 @@ class SaleController extends BaseController {
 			$sale->sale_date   	= $date->format('Y-m-d 00:00:00');			
 			$sale->save();
 					      
-			return Redirect::to('create_sale_add_item')->with('sale', $inputs);				
+			Session::put('current_sale', $sale);
+
+			return Redirect::to('create_sale_add_item');				
 		}
 
 		// Something went wrong.

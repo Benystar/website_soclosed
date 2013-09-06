@@ -22,6 +22,7 @@
 		<link href="{{{ asset('assets/css/bootstrap.css') }}}" rel="stylesheet">
 		<link href="{{{ asset('assets/css/soclosed.css') }}}" rel="stylesheet">
 		<link href="{{{ asset('assets/css/datepicker.css') }}}" rel="stylesheet">
+		<link href="{{{ asset('assets/css/bootstrap-fileupload.min.css') }}}" rel="stylesheet">
 
 		<style>
 		@section('styles')
@@ -101,6 +102,7 @@
 		<!-- Javascripts
 		================================================== -->		
 		<script src="{{{ asset('assets/js/bootstrap-datepicker.js') }}}"></script>
-		<script src="{{{ asset('assets/js/bootstrap/bootstrap.min.js') }}}"></script>	    
+		<script src="{{{ asset('assets/js/bootstrap/bootstrap.min.js') }}}"></script>
+		<script src="{{{ asset('assets/js/bootstrap-fileupload.min.js') }}}"></script>	    
 	</body>
 </html>

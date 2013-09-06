@@ -87,3 +87,5 @@ Route::get('create_sale_add_item', array('before' => 'auth', 'do' => function() 
 Route::post('subscribe', 'SubscribeUserController@insertUser');
 Route::post('create_sale', 'SaleController@insertSale');
 Route::post('create_sale_add_item', 'SaleController@addItem');
+
+
