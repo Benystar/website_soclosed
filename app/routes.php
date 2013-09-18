@@ -78,6 +78,10 @@ Route::get('create_sale_add_item', array('before' => 'auth', 'do' => function() 
     return View::make('sale/create_sale_add_item');
 }));
 
+Route::get('create_sale_share', array('before' => 'auth', 'do' => function() {
+   
+    return View::make('sale/create_sale_share');
+}));
 
 /***********************************************
     Routes vers les contrôleurs
