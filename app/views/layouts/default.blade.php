@@ -71,7 +71,7 @@
 
 						<ul class="nav pull-right">
 							@if (Auth::check())
-							<li class="navbar-text">Logged in as {{{ Auth::user()->username }}}</li>
+							<li class="navbar-text">Logged in as {{{ Auth::user()->name }}}</li>
 							<li class="divider-vertical"></li>
 							<li {{{ (Request::is('account') ? 'class="active"' : '') }}}><a href="{{{ URL::to('account') }}}">Mon compte</a></li>
 							<li><a href="{{{ URL::to('logout') }}}">Déconnexion</a></li>

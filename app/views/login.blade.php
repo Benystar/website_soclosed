@@ -27,5 +27,7 @@
 
 {{ Form::close() }}
 
+<p><a href="{{{ URL::to('login/fb') }}}"><img src="{{{ asset('assets/img/facebook/facebook.png') }}}" /></a><br /></p>
 <a href="{{{ URL::to('subscribe') }}}">Pas encore inscrit?</a>
+
 @endsection

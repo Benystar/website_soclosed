@@ -34,9 +34,9 @@ class SaleController extends BaseController {
 			$sale->sale_date   	= $date->format('Y-m-d 00:00:00');			
 			$sale->save();			
 			
-			Session::put('current_sale_id', $sale->id);			
-			
-			return Redirect::to('create_sale_add_item')->with('sale', $sale);				
+			Session::put('current_sale', $sale);
+						
+			return Redirect::to('create_sale_add_item');				
 		}
 
 		// Something went wrong.
@@ -48,7 +48,6 @@ class SaleController extends BaseController {
 
 	public function addItem(){
 		$file = Input::file('file'); // your file upload input field in the form should be named 'file'
-
 		$destinationPath = 'uploads/'.str_random(8);
 		$filename = $file->getClientOriginalName();
 		//$extension =$file->getClientOriginalExtension(); //if you need extension of the file
@@ -59,14 +58,10 @@ class SaleController extends BaseController {
 		$item->description  = Input::get('item_description');  
 		$item->price     	= Input::get('item_price');  
 		$item->picture_url  = $destinationPath ."/". $filename;
-		$item->id_sale  	= Session::get('current_sale_id');
+		$item->id_sale  	= Session::get('current_sale')->id;
 		$item->save();
 
-		$sale = Sale::find(Session::get('current_sale_id'));
-
-		$items = $sale->items;
-
-		return Redirect::to('create_sale_add_item')->with('items', $items[0]);
+		return Redirect::to('create_sale_add_item');
 	}
 
 }

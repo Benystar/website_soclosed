@@ -1,0 +1,9 @@
+#btn_invit_fb p a.invitation-facebook-btn {
+	display: block; 
+	width: 246px; height: 40px; 
+	background-image: url("../img/facebook/invitation_fb.png");
+	background-position: top; 
+	text-indent: -9999px; 
+}
+
+#FBUIWrapper {position: fixed; top: 0; right: 0; left: 106px;}
