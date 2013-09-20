@@ -31,7 +31,9 @@ class SaleController extends BaseController {
 			$sale 				= new Sale;
 			$sale->name 		= Input::get('sale_name');
 			$sale->description  = Input::get('sale_description'); 			
-			$sale->sale_date   	= $date->format('Y-m-d 00:00:00');			
+			$sale->sale_date   	= $date->format('Y-m-d 00:00:00');
+			$sale->id_user 		= Auth::user()->id;
+			$sale->alias 		= str_random(6).str_random(9).'&'.Input::get('sale_name');	 // Calcul totalement aléatoire de l'alias
 			$sale->save();			
 			
 			Session::put('current_sale', $sale);

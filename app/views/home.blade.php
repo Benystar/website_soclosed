@@ -2,29 +2,30 @@
 
 @section('content')
 
-<div class="content">	
-    <div class="row-fluid">
-		<div class="span4">
-			<h2>Créer une vente</h2>
-			<p>Envie de créer une nouvelle vente privée? C'est dans cette section que ça se passe</p>
-			<p>
-				<a class="btn" href="{{{ URL::to('create_sale') }}}">Créer »</a>
-			</p>
-		</div>
-		<div class="span4">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-			<p>
-				<a class="btn" href="#">View details »</a>
-			</p>
-		</div>	
-		<div class="span4">
-			<h2>Heading</h2>
-			<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-			<p>
-				<a class="btn" href="#">View details »</a>
-			</p>
-		</div> 
-	</div>	 
+<div class="content">    
+	<div class="container-fluid">
+	    <div class="row-fluid">
+		    <div class="span7">
+			    <h3>Mes ventes en cours</h3>				
+				@if($sales->count() <= 0)						  
+					<p class="well">Vous n'avez pas de vente en cours.<br / >Cliquez ici pour créer une nouvelle ventes en quelques minutes</p>
+				@else
+					@foreach ($sales as $key => $val)
+						test
+					@endforeach
+				@endif				
+				
+				<h3>Mes ventes terminées</h3>
+				<p class="well">Vous n'avez pas de vente terminées.</p>			
+		    </div>
+		    <div class="span3 offset2 well text-right">
+			    <h4>Créer une vente</h4>
+				<p>Envie de créer une nouvelle vente? C'est dans cette section que ça se passe</p>
+				<p class="text-right">
+					<a class="btn btn-primary" href="{{{ URL::to('create_sale') }}}">Créer »</a>
+				</p>
+		    </div>
+	    </div>
+    </div>	 
 </div>
 @endsection

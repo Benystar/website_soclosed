@@ -7,7 +7,7 @@
         <p>Le site de vos ventes privées sociales</p> 
 </div>
 
-{{ Form::open(array('routes' => 'login')) }}
+{{ Form::open(array('url' => 'login')) }}
 
     <!-- check for login errors flash var -->
     @if (Session::has('login_errors'))

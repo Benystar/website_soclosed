@@ -11,21 +11,15 @@
 |
 */
 
-
 // Appel direct depuis l'URL
-/*Route::get('/', function() {
-    return View::make('login');
-});*/
-
-// Appel direct depuis l'URL
-Route::get('login', function() {
+Route::get('/', function() {
    
     return View::make('login');
 });
 
 // Appel depuis un formulaire
 Route::post('login', function() {
-    
+   
     // get POST data
     $userdata = array(
         'username'      => Input::get('username'),
@@ -34,19 +28,14 @@ Route::post('login', function() {
 
     if ( Auth::attempt($userdata) )
     {        
-        // we are now logged in, go to home
-
-        //return Redirect::intended('home');
+        // we are now logged in, go to home        
         return Redirect::to('home');
     }
     else
     {
-
         // auth failure! lets go back to the login
         return Redirect::to('login')
             ->with('login_errors', true);
-        // pass any error notification you want
-        // i like to do it this way :)
     }
 
     
@@ -54,12 +43,14 @@ Route::post('login', function() {
 
 Route::get('logout', function() {
     Auth::logout();
-    return Redirect::to('login');
+    return Redirect::to('/');
 });
 
 Route::get('home', array('before' => 'auth', 'do' => function() {
 
-    return View::make('home');
+    $sales = Sale::where('id_user', '=', Auth::user()->id)->get();
+
+    return View::make('home')->with('sales', $sales);
 }));
 
 
@@ -95,13 +86,13 @@ Route::get('login/fb', function() {
 Route::get('login/fb/callback', function() {
     $code = Input::get('code');
     if (strlen($code) == 0)
-        return Redirect::to('login')->with('message', 'There was an error communicating with Facebook');
+        return Redirect::to('/')->with('message', 'There was an error communicating with Facebook');
  
     $facebook = new Facebook(Config::get('facebook'));
     $uid = $facebook->getUser();
  
     if ($uid == 0)
-         return Redirect::to('login')->with('message', 'There was an error');
+         return Redirect::to('/')->with('message', 'There was an error');
  
     $me = $facebook->api('/me'); 
     $profile = Profile::whereUid($uid)->first();
@@ -129,6 +120,18 @@ Route::get('login/fb/callback', function() {
  
     return Redirect::to('home')->with('message', 'Logged in with Facebook');
 });
+
+Route::get('/{alias}', array('before' => 'auth', 'do' => function($alias) {
+
+    $sale = Sale::where('alias', '=', $alias)->get();
+
+    if($sale != null) {
+        return Redirect::to('display_sale')->withInput($id);
+    }else{
+        return Redirect::to('/');
+    }        
+}));
+
 
 /***********************************************
     Routes vers les contrôleurs

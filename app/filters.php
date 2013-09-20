@@ -40,30 +40,18 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('account/login');
+	if (Auth::guest()) {
+        // Stores current url on session and redirect to login page
+        Session::put('redirect', URL::full());
+        return Redirect::to('/');
+    }
+    if ($redirect = Session::get('redirect')) {
+        Session::forget('redirect');
+        return Redirect::to($redirect);
+    }
+	//if (Auth::guest()) return Redirect::to('/');
 });
-
-
-Route::filter('auth.basic', function()
-{
-	return Auth::basic();
-});
-
-/*
-|--------------------------------------------------------------------------
-| Guest Filter
-|--------------------------------------------------------------------------
-|
-| The "guest" filter is the counterpart of the authentication filters as
-| it simply checks that the current user is not logged in. A redirect
-| response will be issued if they are, which you may freely change.
-|
-*/
-
-Route::filter('guest', function()
-{
-	if (Auth::check()) return Redirect::to('/');
-});
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -84,12 +72,24 @@ Route::filter('csrf', function()
 	}
 });
 
-Route::filter('auth', function()
-{
-	if (Auth::guest()) return Redirect::to('login');
-});
- 
+
+/*
+|--------------------------------------------------------------------------
+| Guest Filter
+|--------------------------------------------------------------------------
+|
+| The "guest" filter is the counterpart of the authentication filters as
+| it simply checks that the current user is not logged in. A redirect
+| response will be issued if they are, which you may freely change.
+|
+*/ 
 Route::filter('guest', function()
 {
     if (Auth::check()) return Redirect::to('/');
+});
+
+
+Route::filter('auth.basic', function()
+{
+	return Auth::basic();
 });
