@@ -1551,6 +1551,7 @@ return array(
     'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Writer/TranslationWriter.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'User' => $baseDir . '/app/models/User.php',
+    'UserRoles' => $baseDir . '/app/database/migrations/2013_09_23_135340_user_roles.php',
     'UsersTableSeeder' => $baseDir . '/app/database/seeds/UsersTableSeeder.php',
     'Whoops\\Exception\\ErrorException' => $vendorDir . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
     'Whoops\\Exception\\Frame' => $vendorDir . '/filp/whoops/src/Whoops/Exception/Frame.php',

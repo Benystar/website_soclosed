@@ -121,6 +121,12 @@ Route::get('login/fb/callback', function() {
     return Redirect::to('home')->with('message', 'Logged in with Facebook');
 });
 
+Route::get('admin', array('before' => 'auth_admin', 'do' => function() {
+
+           return "bien joué";
+          
+}));
+
 Route::get('/{alias}', array('before' => 'auth', 'do' => function($alias) {
 
     $sale = Sale::where('alias', '=', $alias)->get();
@@ -131,6 +137,8 @@ Route::get('/{alias}', array('before' => 'auth', 'do' => function($alias) {
         return Redirect::to('/');
     }        
 }));
+
+
 
 
 /***********************************************

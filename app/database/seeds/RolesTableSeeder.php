@@ -10,7 +10,7 @@ class RolesTableSeeder extends Seeder {
         $roles = array(
                     array(
                         'label'         => 'Admin',
-                        'description'   => 'Administrateur du site So-Closed',        	            
+                        'description'   => 'Administrateur du site So-Closed',                      
                         'created_at'    => new DateTime,
                         'updated_at'    => new DateTime,
                     )

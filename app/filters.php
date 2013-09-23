@@ -38,6 +38,13 @@ App::after(function($request, $response)
 |
 */
 
+ /*
+ 		------------------ Very important : -----------------------------------------------------------------
+		If a response is returned from a filter, that response will be considered the response to the request
+		and the route will not be executed, and any after filters on the route will also be cancelled.
+		-----------------------------------------------------------------------------------------------------
+ */ 
+
 Route::filter('auth', function()
 {
 	if (Auth::guest()) {
@@ -49,7 +56,24 @@ Route::filter('auth', function()
         Session::forget('redirect');
         return Redirect::to($redirect);
     }
-	//if (Auth::guest()) return Redirect::to('/');
+	
+});
+
+Route::filter('auth_admin', function()
+{
+	if (Auth::guest())        
+        return Redirect::to('/');    
+
+    $rel_user_role = Rel_user_role::where('id_user', '=', Auth::user()->id)
+    								->where('id_role', '=', 1)
+    								->get();
+   							
+
+    if ($rel_user_role->count() != 1)     	
+    	return Redirect::to('/');
+    
+   
+	
 });
  
 
