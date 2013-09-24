@@ -11,17 +11,26 @@
 					<p class="well">Vous n'avez pas de vente en cours.<br / >Cliquez ici pour créer une nouvelle ventes en quelques minutes</p>
 				@else
 					@foreach ($sales as $key => $val)
-						test
+						<div class="row-fluid">
+							<div class="span2"><img src="{{{asset("assets/img/panier-vente.png")}}}" class="img-polaroid"></div>
+							<div class="span5">
+								<strong>{{{ $val->name }}}</strong><br />
+								<img src="{{{asset("assets/img/icon-chrono.png")}}}">&nbsp;{{{ $val->sale_date }}}
+							</div>
+							<div class="span1 offset2">Modifier</div>
+							<div class="span1 offset1"><a href="{{{ URL::to($val->alias) }}}">Consulter</a></div>
+						</div>
+						<br />
 					@endforeach
 				@endif				
 				
 				<h3>Mes ventes terminées</h3>
-				<p class="well">Vous n'avez pas de vente terminées.</p>			
+				<p class="well">Vous n'avez pas de vente terminée.</p>			
 		    </div>
-		    <div class="span3 offset2 well text-right">
+		    <div class="span3 offset2 well text-center">
 			    <h4>Créer une vente</h4>
 				<p>Envie de créer une nouvelle vente? C'est dans cette section que ça se passe</p>
-				<p class="text-right">
+				<p class="text-center">
 					<a class="btn btn-primary" href="{{{ URL::to('create_sale') }}}">Créer »</a>
 				</p>
 		    </div>

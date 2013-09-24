@@ -50,6 +50,7 @@ Route::get('home', array('before' => 'auth', 'do' => function() {
 
     $sales = Sale::where('id_user', '=', Auth::user()->id)->get();
 
+    // Quand on passe un paramètre "with" à une View, on peut le récupérer tel quel sur la vue
     return View::make('home')->with('sales', $sales);
 }));
 
@@ -74,6 +75,13 @@ Route::get('create_sale_share', array('before' => 'auth', 'do' => function() {
     return View::make('sale/create_sale_share');
 }));
 
+// Route vers la fiche produit -------------------------------------
+Route::get('product', array('before' => 'auth', 'do' => function() {
+   
+   return View::make('sale/display_product')->with('product', $val);
+}));
+
+// Route pour le login via Facebook----------------------------------
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));
     $params = array(
@@ -129,10 +137,12 @@ Route::get('admin', array('before' => 'auth_admin', 'do' => function() {
 
 Route::get('/{alias}', array('before' => 'auth', 'do' => function($alias) {
 
-    $sale = Sale::where('alias', '=', $alias)->get();
+    // Comme il est certain qu'il n'y ait qu'un seul résultat, on utilise first()
+    $sale = Sale::where('alias', '=', $alias)->with('items')->first();
 
+    // A compléter
     if($sale != null) {
-        return Redirect::to('display_sale')->withInput($id);
+        return View::make('sale/display_sale')->with('sale', $sale);
     }else{
         return Redirect::to('/');
     }        
