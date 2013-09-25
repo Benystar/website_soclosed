@@ -21,11 +21,11 @@
 	    	@foreach ($sale->items as $key => $val)		    	
 				    <li class="span4" style="background-color: #ffffff;">
 					    <div class="thumbnail">
-						    <img src="{{{ $val->picture_url }}}">
+						    <img src="{{{ asset($val->picture_url) }}}">
 						    <div class="caption">
 							    <h3>{{{ $val->name }}}</h3>
 							    <p>{{{ $val->description }}}</p>
-							    <p align="center"><a href="" class="btn btn-inverse btn-block">Fiche produit</a></p>
+							    <p align="center"><a href="{{{ URL::to("display_item/".$val->id) }}}" class="btn btn-inverse btn-block">Fiche produit</a></p>
 						    </div>
 					    </div>
 				    </li>				    			   

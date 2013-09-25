@@ -2,8 +2,16 @@
 
 @section('content')
 
+<div class="row">
+	<div class="span12 text-right"><img src="{{{asset("assets/img/logo.png")}}}"></div>
+</div>
+<br />
+<br />
 <div class="content">    
-	<div class="container-fluid">
+	<div class="container-fluid" style="background-color: #fbf9fa;">
+		<div class="row">
+			&nbsp;
+		</div>
 	    <div class="row-fluid">
 		    <div class="span7">
 			    <h3>Mes ventes en cours</h3>				

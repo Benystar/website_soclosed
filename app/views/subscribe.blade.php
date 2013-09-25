@@ -5,7 +5,7 @@
 <!--Form::open('user/profile', 'POST', array('class' => 'awesome'));-->
 
 @if (Session::has('login_errors'))
-    <span class="error">Username or password incorrect.</span>
+    <span class="error">Login ou mot de passe incorrect.</span>
 @endif
 
 {{ Form::open(array('action' => 'SubscribeUserController@insertUser')) }}

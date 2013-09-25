@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<!-- Basic Page Needs
 		================================================== -->
@@ -71,13 +71,13 @@
 
 						<ul class="nav pull-right">
 							@if (Auth::check())
-							<li class="navbar-text">Logged in as {{{ Auth::user()->name }}}</li>
+							<li class="navbar-text"><i class="icon-user icon-white"></i>&nbsp;&nbsp;{{{ Auth::user()->name }}}</li>
 							<li class="divider-vertical"></li>
-							<li {{{ (Request::is('account') ? 'class="active"' : '') }}}><a href="{{{ URL::to('account') }}}">Mon compte</a></li>
+							<li {{{ (Request::is('account') ? 'class="active"' : '') }}}><a href="{{{ URL::to('home') }}}">Mes ventes</a></li>
 							<li><a href="{{{ URL::to('logout') }}}">Déconnexion</a></li>
 							@else
 							<li {{{ (Request::is('login') ? 'class="active"' : '') }}}><a href="{{{ URL::to('login') }}}">Login</a></li>
-							<li {{{ (Request::is('account/register') ? 'class="active"' : '') }}}><a href="{{{ URL::to('account/register') }}}">S'inscrire</a></li>
+							<li {{{ (Request::is('account/register') ? 'class="active"' : '') }}}><a href="{{{ URL::to('subscribe') }}}">S'inscrire</a></li>
 							@endif
 						</ul>
 					</div>

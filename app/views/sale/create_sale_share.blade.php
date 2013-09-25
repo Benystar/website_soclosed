@@ -30,7 +30,7 @@
    
   </div>
   <div class="span2 text-right">
-   	<a class="btn  btn-large btn-primary" href="{{{ URL::to('') }}}">Etape suivante</a>    
+   	<a class="btn  btn-large btn-primary" href="{{{ URL::to(Session::get('current_sale')->alias) }}}/21&4">Terminer</a>    
   </div>
 </div>
 

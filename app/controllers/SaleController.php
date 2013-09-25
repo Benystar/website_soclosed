@@ -33,7 +33,8 @@ class SaleController extends BaseController {
 			$sale->description  = Input::get('sale_description'); 			
 			$sale->sale_date   	= $date->format('Y-m-d 00:00:00');
 			$sale->id_user 		= Auth::user()->id;
-			$sale->alias 		= str_random(6).str_random(9).'&'.Input::get('sale_name');	 // Calcul totalement aléatoire de l'alias
+			// Calcul totalement aléatoire de l'alias ---- On retire les blancs pour avoir une URL propre
+			$sale->alias 		= str_random(6).str_random(9).'&'.str_replace(" ", "-", Input::get('sale_name'));	 
 			$sale->save();			
 			
 			Session::put('current_sale', $sale);
@@ -50,7 +51,7 @@ class SaleController extends BaseController {
 
 	public function addItem(){
 		$file = Input::file('file'); // your file upload input field in the form should be named 'file'
-		$destinationPath = 'uploads/'.str_random(8);
+		$destinationPath = 'assets/uploads/'.str_random(8);
 		$filename = $file->getClientOriginalName();
 		//$extension =$file->getClientOriginalExtension(); //if you need extension of the file
 		$uploadSuccess = Input::file('file')->move($destinationPath, $filename);		

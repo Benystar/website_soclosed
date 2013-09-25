@@ -39,7 +39,7 @@ class SubscribeUserController extends BaseController {
 
     
 			if(Auth::attempt($userdata)) {
-				return Redirect::to('home')->with('success', 'Account created with success!');
+				return Redirect::to('home')->with('success', 'Compte créé avec succès!');
 			}			
 		}
 

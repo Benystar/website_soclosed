@@ -75,12 +75,6 @@ Route::get('create_sale_share', array('before' => 'auth', 'do' => function() {
     return View::make('sale/create_sale_share');
 }));
 
-// Route vers la fiche produit -------------------------------------
-Route::get('product', array('before' => 'auth', 'do' => function() {
-   
-   return View::make('sale/display_product')->with('product', $val);
-}));
-
 // Route pour le login via Facebook----------------------------------
 Route::get('login/fb', function() {
     $facebook = new Facebook(Config::get('facebook'));
@@ -135,14 +129,26 @@ Route::get('admin', array('before' => 'auth_admin', 'do' => function() {
           
 }));
 
-Route::get('/{alias}', array('before' => 'auth', 'do' => function($alias) {
+Route::get('display_item/{id}', array('before' => 'auth', 'do' => function($id) {
+
+        $item = Item::where('id', '=', $id)->first();
+
+        return View::make('sale/display_item')->with('item', $item);          
+}));
+
+Route::get('/{alias}/{create?}', array('before' => 'auth', 'do' => function($alias,$create=null) {
 
     // Comme il est certain qu'il n'y ait qu'un seul résultat, on utilise first()
     $sale = Sale::where('alias', '=', $alias)->with('items')->first();
 
-    // A compléter
     if($sale != null) {
-        return View::make('sale/display_sale')->with('sale', $sale);
+        // La chaine 21&4 est une chaine prise au hasard qui permet de détecter que l'on vient d'une page de création de vente
+        if($create != "21&4"){            
+            return View::make('sale/display_sale')->with('sale', $sale);
+        }else{    
+            Session::flash('success', 'Vente créée avec succès!');        
+            return View::make('sale/display_sale')->with('sale', $sale);
+        }
     }else{
         return Redirect::to('/');
     }        

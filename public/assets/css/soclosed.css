@@ -7,3 +7,44 @@
 }
 
 #FBUIWrapper {position: fixed; top: 0; right: 0; left: 106px;}
+
+.border{
+	border: 1px solid #E3E3E3;
+}
+
+.border-bottom{
+	border-bottom: 1px solid #E3E3E3;
+}
+
+.border-top{
+	border-top: 1px solid #E3E3E3;
+}
+
+.item-name{
+	font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+	color: #000000;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.item-price{
+	font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+	font-size: 20px;
+	color: #000000;
+}
+
+.home-login-area{
+	width: 300px;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #fbf9fa;
+    border: 1px solid #eed6ec;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 20px;
+    min-height: 20px;
+    padding: 19px;
+   	min-height: 20px;
+   	padding: 19px; 	
+}
