@@ -38,13 +38,56 @@
 	float: none;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 20px;
 	background-color: #fbf9fa;
     border: 1px solid #eed6ec;
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
-    margin-bottom: 20px;
+   
     min-height: 20px;
-    padding: 19px;
-   	min-height: 20px;
-   	padding: 19px; 	
+    padding: 19px;   
+   		
 }
+
+.background-page{
+	background-color:#fbf9fa;
+	padding-left: 50px;
+	padding-top: 30px;
+}
+
+.background-color{
+	background-color:#fbf9fa;
+}
+
+.header-sale{
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color:#000000;
+	color: #FFFFFF;
+}
+
+.background-img-sale-describe{
+	display: block; 
+	background-image: url("../img/mode_mots.jpg");
+	background-position: top; 
+	text-indent: -9999px;
+	width: 400px;
+	height: 400px;
+}
+
+.header-a:link {
+	color: white;
+}
+.header-a:visited {
+	color: white;
+}
+.header-a:hover {
+	color: white;
+}
+.header-a:active {
+	color: white;
+}
+
+

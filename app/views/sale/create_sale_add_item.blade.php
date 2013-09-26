@@ -15,7 +15,7 @@
    
   </div>
   <div class="span2 text-right">
-   <a class="btn  btn-large btn-primary" href="{{{ URL::to('create_sale_share') }}}">Etape suivante</a>    
+   <a class="btn btn-large btn-primary" href="{{{ URL::to('create_sale_share') }}}">Etape suivante</a>    
   </div>
 </div>
 <br />

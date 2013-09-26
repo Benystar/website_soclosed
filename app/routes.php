@@ -46,34 +46,12 @@ Route::get('logout', function() {
     return Redirect::to('/');
 });
 
-Route::get('home', array('before' => 'auth', 'do' => function() {
-
-    $sales = Sale::where('id_user', '=', Auth::user()->id)->get();
-
-    // Quand on passe un paramètre "with" à une View, on peut le récupérer tel quel sur la vue
-    return View::make('home')->with('sales', $sales);
-}));
-
-
 Route::get('subscribe', function() {
    
     return View::make('subscribe');
 });
 
-Route::get('create_sale', array('before' => 'auth', 'do' => function() {
-   
-    return View::make('sale/create_sale_describe');
-}));
 
-Route::get('create_sale_add_item', array('before' => 'auth', 'do' => function() {
-   
-    return View::make('sale/create_sale_add_item');
-}));
-
-Route::get('create_sale_share', array('before' => 'auth', 'do' => function() {
-   
-    return View::make('sale/create_sale_share');
-}));
 
 // Route pour le login via Facebook----------------------------------
 Route::get('login/fb', function() {
@@ -123,39 +101,78 @@ Route::get('login/fb/callback', function() {
     return Redirect::to('home')->with('message', 'Logged in with Facebook');
 });
 
+//------------------------------------------------------------------------------------------------
+// Contient toutes les routes vers les pages nécessitant d'être authentifiées --------------------
+//------------------------------------------------------------------------------------------------
+Route::group(array('before' => 'auth'), function()
+{
+    Route::get('home', function() {
+
+        $sales = Sale::where('id_user', '=', Auth::user()->id)->get();
+
+        // Quand on passe un paramètre "with" à une View, on peut le récupérer tel quel sur la vue
+        return View::make('home')->with('sales', $sales);
+    });
+
+    Route::get('create_sale', function() {
+   
+        return View::make('sale/sale_describe');
+    });
+
+    Route::get('create_sale_add_item', function() {
+       
+        return View::make('sale/create_sale_add_item');
+    });
+
+    Route::get('create_sale_share', function() {
+       
+        return View::make('sale/create_sale_share');
+    });
+
+    Route::get('display_item/{id}', function($id) {
+
+        $item = Item::where('id', '=', $id)->first();
+
+        return View::make('sale/display_item')->with('item', $item);          
+    });
+
+    Route::get('update_sale/{alias}', function($alias) {
+
+        $sale = Sale::where('alias', '=', $alias)->first();
+
+        return View::make('sale/sale_describe')->with('sale', $sale);          
+    });
+
+    Route::get('/{alias}/{create?}', function($alias,$create=null) {
+
+        // Comme il est certain qu'il n'y ait qu'un seul résultat, on utilise first()
+        $sale = Sale::where('alias', '=', $alias)->with('items')->first();
+
+        if($sale != null) {
+            // La chaine 21&4 est une chaine prise au hasard qui permet de détecter que l'on vient d'une page de création de vente
+            if($create != "21&4"){            
+                return View::make('sale/display_sale')->with('sale', $sale);
+            }else{    
+                Session::flash('success', 'Vente créée avec succès!');        
+                return View::make('sale/display_sale')->with('sale', $sale);
+            }
+        }else{
+            return Redirect::to('/');
+        }        
+    });
+
+
+
+});
+
+//------------------------------------------------------------------------------------------------
+// Contient toutes les routes vers les pages nécessitant d'être admin         --------------------
+//------------------------------------------------------------------------------------------------
 Route::get('admin', array('before' => 'auth_admin', 'do' => function() {
 
            return "bien joué";
           
 }));
-
-Route::get('display_item/{id}', array('before' => 'auth', 'do' => function($id) {
-
-        $item = Item::where('id', '=', $id)->first();
-
-        return View::make('sale/display_item')->with('item', $item);          
-}));
-
-Route::get('/{alias}/{create?}', array('before' => 'auth', 'do' => function($alias,$create=null) {
-
-    // Comme il est certain qu'il n'y ait qu'un seul résultat, on utilise first()
-    $sale = Sale::where('alias', '=', $alias)->with('items')->first();
-
-    if($sale != null) {
-        // La chaine 21&4 est une chaine prise au hasard qui permet de détecter que l'on vient d'une page de création de vente
-        if($create != "21&4"){            
-            return View::make('sale/display_sale')->with('sale', $sale);
-        }else{    
-            Session::flash('success', 'Vente créée avec succès!');        
-            return View::make('sale/display_sale')->with('sale', $sale);
-        }
-    }else{
-        return Redirect::to('/');
-    }        
-}));
-
-
-
 
 /***********************************************
     Routes vers les contrôleurs
@@ -165,5 +182,6 @@ Route::get('/{alias}/{create?}', array('before' => 'auth', 'do' => function($ali
 Route::post('subscribe', 'SubscribeUserController@insertUser');
 Route::post('create_sale', 'SaleController@insertSale');
 Route::post('create_sale_add_item', 'SaleController@addItem');
+Route::post('update_sale_describe', 'SaleController@updateSale');
 
 

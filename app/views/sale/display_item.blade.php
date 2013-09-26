@@ -9,8 +9,9 @@
 
 <br />
 <br />
+
 <div class="row">
-	<a href="{{{ URL::to(Session::get('current_sale')->alias) }}}">Revenir à la vente</a>
+	<a href="">Revenir à la vente</a>
 </div>
 <div class="row" style="background-color: #fbf9fa;">	
 	<div class="span4 offset1 thumbnail" style="background-color: #ffffff;">

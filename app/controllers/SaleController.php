@@ -67,4 +67,51 @@ class SaleController extends BaseController {
 		return Redirect::to('create_sale_add_item');
 	}
 
+	public function updateSale(){
+
+		// Declare the rules for the form validation.
+		//
+		$rules = array(
+			'sale_name'            	=> 'Required',			
+			'sale_description'      => 'Required',
+			'sale_date'             => 'Required'			
+		);
+
+		// Get all the inputs.
+		//
+		$inputs = Input::all();
+
+		// Validate the inputs.
+		//
+		$validator = Validator::make($inputs, $rules);
+
+		// Check if the form validates with success.
+		//
+		if ($validator->passes())
+		{			
+			 $date = DateTime::createFromFormat('j-m-Y', Input::get('sale_date'));
+			
+			// Create the sale.
+			//
+			$sale 				= new Sale;
+			$sale->name 		= Input::get('sale_name');
+			$sale->description  = Input::get('sale_description'); 			
+			$sale->sale_date   	= $date->format('Y-m-d 00:00:00');
+			$sale->id_user 		= Auth::user()->id;
+			// Calcul totalement aléatoire de l'alias ---- On retire les blancs pour avoir une URL propre
+			$sale->alias 		= str_random(6).str_random(9).'&'.str_replace(" ", "-", Input::get('sale_name'));	 
+			$sale->save();			
+			
+			Session::put('current_sale', $sale);
+						
+			return Redirect::to('create_sale_add_item');				
+		}
+
+		// Something went wrong.
+		//
+		return Redirect::to('create_sale')->withInput($inputs)->withErrors($validator->getMessageBag());
+		//
+		
+	}
+
 }
