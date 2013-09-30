@@ -51,7 +51,8 @@ class SaleController extends BaseController {
 
 	public function addItem(){
 		$file = Input::file('file'); // your file upload input field in the form should be named 'file'
-		$destinationPath = 'assets/uploads/'.str_random(8);
+		$sale_alias = Session::get('current_sale')->alias;
+		$destinationPath = 'assets/uploads/'.$sale_alias;
 		$filename = $file->getClientOriginalName();
 		//$extension =$file->getClientOriginalExtension(); //if you need extension of the file
 		$uploadSuccess = Input::file('file')->move($destinationPath, $filename);		
