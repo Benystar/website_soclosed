@@ -17,8 +17,10 @@
 	}
 </script>
 
+<br />
+
 <div class="row">
-  <div class="span10">
+  <div class="col-md-10">
   <blockquote>
     <p>Ma vente : {{{ Session::get('current_sale')->name }}}</p>
     <small>
@@ -29,43 +31,43 @@
   </blockquote>  
    
   </div>
-  <div class="span2 text-right">
+  <div class="col-md-2 text-right">
    	<a class="btn  btn-large btn-primary" href="{{{ URL::to(Session::get('current_sale')->alias) }}}/21&4">Terminer</a>    
   </div>
 </div>
 
-<div class="row-fluid">
-   <div class="span12">
+<div class="row">
+   <div class="col-md-12">
        <div class="form-title"><h2>J'invite mes amis à participer</h2></div>
    </div>
 </div>
 <div class="well">
 	<div class="row">
-	    <div class="span6">
-		    <h5>Facebook</h5>	    
-		    Clique sur ce bouton pour inviter tes amis Facebook à rejoindre la vente
+	    <div class="col-md-6">
+		    <label>Facebook</label>	    
+		    <p>Clique sur ce bouton pour inviter tes amis Facebook à rejoindre la vente</p>
 		</div>
-		<div class="span3"><br />
+		<div class="col-md-3"><br />
 	    	<div id="btn_invit_fb">
 				<p><a href="#" class="invitation-facebook-btn" onClick="invitation_fb()">Invitation</a></p> 
 			</div>
 		 </div>	   
 	</div>
 	<div class="row">
-	    <div class="span6">
-		    <h5>Twitter</h5>	    
-		    Clique sur ce bouton pour inviter tes amis Twitter à rejoindre la vente
+	    <div class="col-md-6">
+		    <label>Twitter</label>	    
+		    <p>Clique sur ce bouton pour inviter tes amis Twitter à rejoindre la vente</p>
 		</div>
-		<div class="span3">
+		<div class="col-md-3">
 	    	<!-- A compléter -->
 		</div>	   
 	</div>
 	<div class="row">
-	    <div class="span6">
-		    <h5>E-Mails</h5>	    
-		    Clique sur ce bouton pour inviter tes amis par e-mail à rejoindre la vente
+	    <div class="col-md-6">
+		    <label>E-Mails</label>	    
+		    <p>Clique sur ce bouton pour inviter tes amis par e-mail à rejoindre la vente</p>
 		</div>
-		<div class="span3">
+		<div class="col-md-3">
 	    	<!-- A compléter -->
 		</div>	   
 	</div>

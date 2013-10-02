@@ -1,9 +1,9 @@
 @extends('layouts.default')
 
 @section('content')
-
+<br />
 <div class="row">
-  <div class="span10">
+  <div class="col-md-10">
   <blockquote>
     <p>Ma vente : {{{ Session::get('current_sale')->name }}}</p>
     <small>
@@ -11,33 +11,31 @@
      <small> 
       <span style="font-weight:bold;">Date de fin :</span>  {{{ Session::get('current_sale')->sale_date }}}
     </small>
-  </blockquote>  
-   
+  </blockquote>   
   </div>
-  <div class="span2 text-right">
+  <div class="col-md-2 text-right">
    <a class="btn btn-large btn-primary" href="{{{ URL::to('create_sale_share') }}}">Etape suivante</a>    
   </div>
 </div>
-<br />
 <div class="well">
-    <div class="row-fluid">
-      <div class="span12">
+    <div class="row">
+      <div class="col-md-12">
        <div class="form-title"><h2>J'ajoute un article</h2></div>
      </div>
     </div>
 
-    <div class="row-fluid">
-    	<div class="span4">
+    <div class="row">
+    	<div class="col-md-4">
     	{{ Form::open(array('action' => 'SaleController@addItem','files'=>true)) }}
 			
   			<div class="form-title">Le nom de mon article</div>
-  			<input class="form-field" type="text" name="item_name" /><br />
+  			<input class="form-control" type="text" name="item_name" /><br />
   			<div class="form-title">La description de mon article</div>
-  			<textarea rows="3" name="item_description"></textarea><br />
+  			<textarea class="form-control" rows="3" name="item_description"></textarea><br />
   			<div class="form-title">Le prix de mon article</div>
-  			<input class="form-field" type="text" name="item_price" /><br />
+  			<input class="form-control" type="text" name="item_price" /><br />
     	</div>
-      <div class="span3">
+      <div class="col-md-3 col-md-offset-1">
         <div class="fileupload fileupload-new" data-provides="fileupload">
           <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
           <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
@@ -47,7 +45,7 @@
           </div>
         </div>
       </div>  
-      <div class="span3">
+      <div class="col-md-3">
         <div class="fileupload fileupload-new" data-provides="fileupload">
           <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
           <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
@@ -57,12 +55,9 @@
           </div>
         </div>
       </div>
-      
-      <div class="span2"></div>
-
     </div>
-    <div class="row-fluid">
-      <div class="span12" style="text-align:right;">
+    <div class="row">
+      <div class="col-md-12" style="text-align:right;">
         <button type="submit" class="btn">Validez</button>
       </div>
     </div>
