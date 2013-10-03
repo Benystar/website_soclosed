@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('header')
+
 <script src="http://connect.facebook.net/en_US/all.js"></script>
 <script type="text/javascript">
 	function invitation_fb()

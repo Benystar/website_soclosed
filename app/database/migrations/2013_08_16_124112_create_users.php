@@ -15,6 +15,7 @@ class CreateUsers extends Migration {
             $table->increments('id');
     		$table->string('username', 128)->unique();
     		$table->string('password', 64);
+    		$table->string('name', 128);
     		$table->timestamps(); // Adds created_at and updated_at columns
         });
  		

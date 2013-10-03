@@ -2,9 +2,7 @@
 
 @section('content')
 
-<div class="row">
-	<div class="col-md-12 text-right"><img src="{{{asset("assets/img/logo.png")}}}"></div>
-</div>
+@include('header')
 <br />
 <br />
 <div class="row">
@@ -12,14 +10,15 @@
 
 		@if(isset($sale))
 			{{ Form::open(array('action' => 'SaleController@updateSale')) }}
+			<input type="hidden"  name="alias"  value="{{{ $sale->alias }}}">
 			<div class="form-title"><h2>Je modifie ma vente</h2></div>
 			<label>Le nom de ma vente</label>
-			<input class="form-control" type="text" name="sale_name" value="{{{ $sale->name }}}" /><br />
+			<input class="form-control" type="text" name="sale_name" value="{{{ $sale->name }}}" readonly/><br />
 			<label>La description de ma vente</label>
-			<textarea rows="3" name="sale_description" />{{{ $sale->description }}}</textarea><br />
+			<textarea rows="3" class="form-control" name="sale_description" />{{{ $sale->description }}}</textarea><br />
 			<label>La date de fin de ma vente</label>
 		    <div class="input-append date" id="dp3" data-date-format="dd-mm-yyyy">
-		    	<input class="col-md-2" size="16" type="text" value="12-02-2013" name="sale_date" readonly><span class="add-on"><i class="icon-th"></i></span>
+		    	<input class="form-control" size="16" type="text" value="12-02-2013" name="sale_date" readonly><span class="add-on"><i class="icon-th"></i></span>
 		    </div>		    
 		@else
 			{{ Form::open(array('action' => 'SaleController@insertSale')) }}

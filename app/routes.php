@@ -119,9 +119,9 @@ Route::group(array('before' => 'auth'), function()
         return View::make('sale/sale_describe');
     });
 
-    Route::get('create_sale_add_item', function() {
+    Route::get('sale_add_item', function() {
        
-        return View::make('sale/create_sale_add_item');
+        return View::make('sale/sale_add_item');
     });
 
     Route::get('create_sale_share', function() {
@@ -141,6 +141,13 @@ Route::group(array('before' => 'auth'), function()
         $sale = Sale::where('alias', '=', $alias)->first();
 
         return View::make('sale/sale_describe')->with('sale', $sale);          
+    });
+
+    Route::get('update_items/{alias}', function($alias) {
+
+        $sale = Sale::where('alias', '=', $alias)->first();         
+
+        return View::make('sale/sale_update_items')->with('current_sale', $sale);       
     });
 
     Route::get('/{alias}/{create?}', function($alias,$create=null) {
@@ -181,7 +188,6 @@ Route::get('admin', array('before' => 'auth_admin', 'do' => function() {
 
 Route::post('subscribe', 'SubscribeUserController@insertUser');
 Route::post('create_sale', 'SaleController@insertSale');
-Route::post('create_sale_add_item', 'SaleController@addItem');
+Route::post('sale_add_item', 'SaleController@addItem');
 Route::post('update_sale_describe', 'SaleController@updateSale');
-
-
+Route::post('update_items', 'SaleController@updateItem');

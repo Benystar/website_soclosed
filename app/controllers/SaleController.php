@@ -12,22 +12,14 @@ class SaleController extends BaseController {
 			'sale_date'             => 'Required'			
 		);
 
-		// Get all the inputs.
-		//
-		$inputs = Input::all();
 
-		// Validate the inputs.
-		//
+		$inputs = Input::all();
 		$validator = Validator::make($inputs, $rules);
 
-		// Check if the form validates with success.
-		//
 		if ($validator->passes())
 		{			
-			 $date = DateTime::createFromFormat('j-m-Y', Input::get('sale_date'));
+			$date = DateTime::createFromFormat('j-m-Y', Input::get('sale_date'));			
 			
-			// Create the sale.
-			//
 			$sale 				= new Sale;
 			$sale->name 		= Input::get('sale_name');
 			$sale->description  = Input::get('sale_description'); 			
@@ -39,7 +31,7 @@ class SaleController extends BaseController {
 			
 			Session::put('current_sale', $sale);
 						
-			return Redirect::to('create_sale_add_item');				
+			return Redirect::to('sale_add_item');				
 		}
 
 		// Something went wrong.
@@ -47,6 +39,33 @@ class SaleController extends BaseController {
 		return Redirect::to('create_sale')->withInput($inputs)->withErrors($validator->getMessageBag());
 		//
 		
+	}
+
+	public function updateSale(){
+
+		$rules = array(
+			'sale_name'            	=> 'Required',			
+			'sale_description'      => 'Required',
+			'sale_date'             => 'Required'			
+		);
+
+		$inputs = Input::all();
+		$validator = Validator::make($inputs, $rules);
+
+		if ($validator->passes())
+		{
+			$sale = Sale::where('alias', '=', $inputs['alias'])->first();						
+			$sale->description  = Input::get('sale_description'); 	
+
+			$date = DateTime::createFromFormat('j-m-Y', Input::get('sale_date'));		
+			$sale->sale_date   	= $date->format('Y-m-d 00:00:00');			
+			 
+			$sale->save();			
+						
+			return Redirect::to($inputs['alias']);				
+		}
+
+		return Redirect::to('create_sale')->withInput($inputs)->withErrors($validator->getMessageBag());		
 	}
 
 	public function addItem(){
@@ -65,54 +84,26 @@ class SaleController extends BaseController {
 		$item->id_sale  	= Session::get('current_sale')->id;
 		$item->save();
 
-		return Redirect::to('create_sale_add_item');
+		return Redirect::to('sale_add_item');
 	}
 
-	public function updateSale(){
+	public function updateItem(){
 
-		// Declare the rules for the form validation.
-		//
-		$rules = array(
-			'sale_name'            	=> 'Required',			
-			'sale_description'      => 'Required',
-			'sale_date'             => 'Required'			
-		);
+		$file = Input::file('file'); // your file upload input field in the form should be named 'file'
+		$sale_alias = Session::get('current_sale')->alias;
+		$destinationPath = 'assets/uploads/'.$sale_alias;
+		$filename = $file->getClientOriginalName();
+		//$extension =$file->getClientOriginalExtension(); //if you need extension of the file
+		$uploadSuccess = Input::file('file')->move($destinationPath, $filename);		
 
-		// Get all the inputs.
-		//
-		$inputs = Input::all();
+		$item 				= new Item();
+		$item->name     	= Input::get('item_name');
+		$item->description  = Input::get('item_description');  
+		$item->price     	= Input::get('item_price');  
+		$item->picture_url  = $destinationPath ."/". $filename;
+		$item->id_sale  	= Session::get('current_sale')->id;
+		$item->save();
 
-		// Validate the inputs.
-		//
-		$validator = Validator::make($inputs, $rules);
-
-		// Check if the form validates with success.
-		//
-		if ($validator->passes())
-		{			
-			 $date = DateTime::createFromFormat('j-m-Y', Input::get('sale_date'));
-			
-			// Create the sale.
-			//
-			$sale 				= new Sale;
-			$sale->name 		= Input::get('sale_name');
-			$sale->description  = Input::get('sale_description'); 			
-			$sale->sale_date   	= $date->format('Y-m-d 00:00:00');
-			$sale->id_user 		= Auth::user()->id;
-			// Calcul totalement aléatoire de l'alias ---- On retire les blancs pour avoir une URL propre
-			$sale->alias 		= str_random(6).str_random(9).'&'.str_replace(" ", "-", Input::get('sale_name'));	 
-			$sale->save();			
-			
-			Session::put('current_sale', $sale);
-						
-			return Redirect::to('create_sale_add_item');				
-		}
-
-		// Something went wrong.
-		//
-		return Redirect::to('create_sale')->withInput($inputs)->withErrors($validator->getMessageBag());
-		//
-		
+		return Redirect::to('sale_update_item');
 	}
-
 }

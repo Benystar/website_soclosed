@@ -2,9 +2,7 @@
 
 @section('content')
 
-<div class="row">
-	<div class="col-md-12 text-right"><img src="{{{asset("assets/img/logo.png")}}}"></div>
-</div>
+@include('header')
 <br />
 <br />
 

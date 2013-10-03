@@ -12,7 +12,7 @@
 		<a href="{{{ URL::to('update_sale/'.$sale->alias) }}}" class="header-a">Modifier ma vente</a>
 	</div>
 	<div class="col-md-2 text-right">
-		<a href="{{{ URL::to('') }}}" class="header-a">Ajouter des articles</a></div>
+		<a href="{{{ URL::to('update_items/'.$sale->alias) }}}" class="header-a">Gérer les articles</a></div>
 	<div class="col-md-2 text-right">
 		<a href="{{{ URL::to('') }}}" class="header-a">Inviter des amis</a></div>
 </div>

@@ -17,11 +17,11 @@
   </blockquote>   
   </div>
   <div class="col-md-2 text-right">
-      <a class="btn btn-large btn-primary" href="{{{ URL::to('create_sale_share') }}}">Etape suivante</a>
+  		<a class="btn btn-large btn-primary" href="{{{ URL::to(Session::get('current_sale')->alias) }}}">Terminer</a>
   </div>
 </div>
 
-@include('sale/add_item_form', array('action'=>'create'));
+@include('sale/add_item_form', array('action'=>'update'));
 
 @include('sale/add_item_list');
 
