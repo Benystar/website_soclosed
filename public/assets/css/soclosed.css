@@ -92,4 +92,11 @@ body {
 	color: white;
 }
 
+.straight-line {
+	border-top : 1px solid #E3E3E3;
+	display: block;
+ 	width: 100%;
+ 	margin-bottom: 15px;
+}
+
 

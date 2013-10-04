@@ -119,15 +119,28 @@ Route::group(array('before' => 'auth'), function()
         return View::make('sale/sale_describe');
     });
 
-    Route::get('sale_add_item', function() {
+    Route::get('sale_add_item/{alias}', function($alias) {
+
+        $sale = Sale::where('alias', '=', $alias)->first();
        
-        return View::make('sale/sale_add_item');
+        return View::make('sale/sale_add_item')->with('sale', $sale);
     });
 
-    Route::get('create_sale_share', function() {
+    //////////////////////////////////////////////
+    Route::get('sale_share_init/{alias}', function($alias) {
+
+        $sale = Sale::where('alias', '=', $alias)->first();
        
-        return View::make('sale/create_sale_share');
+        return View::make('sale/sale_share_init')->with('sale', $sale);
     });
+
+    Route::get('sale_share_update/{alias}', function($alias) {
+
+        $sale = Sale::where('alias', '=', $alias)->first();
+       
+        return View::make('sale/sale_share_update')->with('sale', $sale);
+    });
+    ////////////////////////////////////////////
 
     Route::get('display_item/{id}', function($id) {
 
@@ -147,8 +160,10 @@ Route::group(array('before' => 'auth'), function()
 
         $sale = Sale::where('alias', '=', $alias)->first();         
 
-        return View::make('sale/sale_update_items')->with('current_sale', $sale);       
+        return View::make('sale/sale_update_items')->with('sale', $sale);       
     });
+
+    Route::get('update_items/delete/{sale_alias}/{item_id}', 'SaleController@deleteItem');
 
     Route::get('/{alias}/{create?}', function($alias,$create=null) {
 

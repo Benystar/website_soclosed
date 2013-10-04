@@ -12,7 +12,9 @@
     @elseif($action == "update")
       {{ Form::open(array('action' => 'SaleController@updateItem','files'=>true)) }}
     @endif  
-			
+			  
+        <input type="hidden" name="sale_alias" value="{{{ $sale->alias }}}" />
+
   			<div class="form-title">Le nom de mon article</div>
   			<input class="form-control" type="text" name="item_name" /><br />
   			<div class="form-title">La description de mon article</div>

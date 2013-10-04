@@ -15,6 +15,7 @@ class AlterSale extends Migration {
 		{
 		    $table->string('alias');
 		    $table->integer('id_user');
+		    $table->index('alias');
 		});
 	}
 
@@ -25,6 +26,7 @@ class AlterSale extends Migration {
 	 */
 	public function down()
 	{
+		$table->dropIndex('sales_alias_index');
 		$table->dropColumn('alias');
 		$table->dropColumn('id_user');
 	}

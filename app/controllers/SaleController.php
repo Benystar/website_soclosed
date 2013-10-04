@@ -4,8 +4,6 @@ class SaleController extends BaseController {
 
 	public function insertSale(){
 
-		// Declare the rules for the form validation.
-		//
 		$rules = array(
 			'sale_name'            	=> 'Required',			
 			'sale_description'      => 'Required',
@@ -29,9 +27,9 @@ class SaleController extends BaseController {
 			$sale->alias 		= str_random(6).str_random(9).'&'.str_replace(" ", "-", Input::get('sale_name'));	 
 			$sale->save();			
 			
-			Session::put('current_sale', $sale);
+			//Session::put('sale_id', $sale);
 						
-			return Redirect::to('sale_add_item');				
+			return Redirect::to('sale_add_item/'.$sale->alias);				
 		}
 
 		// Something went wrong.
@@ -69,8 +67,9 @@ class SaleController extends BaseController {
 	}
 
 	public function addItem(){
+
 		$file = Input::file('file'); // your file upload input field in the form should be named 'file'
-		$sale_alias = Session::get('current_sale')->alias;
+		$sale_alias = Input::get('sale_alias');
 		$destinationPath = 'assets/uploads/'.$sale_alias;
 		$filename = $file->getClientOriginalName();
 		//$extension =$file->getClientOriginalExtension(); //if you need extension of the file
@@ -81,16 +80,19 @@ class SaleController extends BaseController {
 		$item->description  = Input::get('item_description');  
 		$item->price     	= Input::get('item_price');  
 		$item->picture_url  = $destinationPath ."/". $filename;
-		$item->id_sale  	= Session::get('current_sale')->id;
+		
+		$sale = Sale::where('alias', '=', $sale_alias)->first();
+
+		$item->id_sale  	= $sale->id;
 		$item->save();
 
-		return Redirect::to('sale_add_item');
+		return Redirect::to('sale_add_item/'.$sale_alias);
 	}
 
 	public function updateItem(){
 
 		$file = Input::file('file'); // your file upload input field in the form should be named 'file'
-		$sale_alias = Session::get('current_sale')->alias;
+		$sale_alias = Input::get('sale_alias');
 		$destinationPath = 'assets/uploads/'.$sale_alias;
 		$filename = $file->getClientOriginalName();
 		//$extension =$file->getClientOriginalExtension(); //if you need extension of the file
@@ -101,9 +103,19 @@ class SaleController extends BaseController {
 		$item->description  = Input::get('item_description');  
 		$item->price     	= Input::get('item_price');  
 		$item->picture_url  = $destinationPath ."/". $filename;
-		$item->id_sale  	= Session::get('current_sale')->id;
-		$item->save();
 
-		return Redirect::to('sale_update_item');
+		$sale = Sale::where('alias', '=', $sale_alias)->first();
+
+		$item->id_sale  	= $sale->id;
+		$item->save();
+		
+		return Redirect::to('update_items/'.$sale_alias);
+	}
+
+	public function deleteItem($sale_alias, $item_id){
+
+		Item::destroy($item_id);
+
+		return Redirect::to('update_items/'.$sale_alias);
 	}
 }

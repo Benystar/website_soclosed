@@ -14,7 +14,7 @@
 	<div class="col-md-2 text-right">
 		<a href="{{{ URL::to('update_items/'.$sale->alias) }}}" class="header-a">Gérer les articles</a></div>
 	<div class="col-md-2 text-right">
-		<a href="{{{ URL::to('') }}}" class="header-a">Inviter des amis</a></div>
+		<a href="{{{ URL::to('sale_share_update/'.$sale->alias) }}}" class="header-a">Inviter des amis</a></div>
 </div>
 <div class="row background-color">
 	<br />
