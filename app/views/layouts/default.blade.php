@@ -43,6 +43,7 @@
 	                        <li><a href=""><span class="glyphicon glyphicon-user"></span>
  {{{ Auth::user()->username }}}</a></li>
 	                        <li><a href="{{{ URL::to('home') }}}">Mes ventes</a></li>
+	                        <li><a href="{{{ URL::to('home') }}}">Mon panier</a></li>
 	                        <li><a href="{{{ URL::to('logout') }}}">Déconnexion</a></li>
                         @else
 	                        <li><a href="{{{ URL::to('login') }}}">Login</a></li>

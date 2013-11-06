@@ -163,6 +163,11 @@ Route::group(array('before' => 'auth'), function()
 
     Route::get('update_items/delete/{sale_alias}/{item_id}', 'SaleController@deleteItem');
 
+    Route::get('test_js', function() {
+        echo "test";
+        exit();
+    });
+
     Route::get('/{alias}/{create?}', function($alias,$create=null) {
 
         // Comme il est certain qu'il n'y ait qu'un seul résultat, on utilise first()
@@ -180,7 +185,6 @@ Route::group(array('before' => 'auth'), function()
             return Redirect::to('/');
         }        
     });
-
 
 
 });

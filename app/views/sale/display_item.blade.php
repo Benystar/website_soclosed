@@ -2,6 +2,7 @@
 
 @section('content')
 
+<script src="{{{ asset('assets/js/so-closed.js') }}}"></script>
 
 <div class="row">
 	<div class="col-md-12 text-right"><img src="{{{asset("assets/img/logo.png")}}}"></div>
@@ -47,8 +48,13 @@
 			</div>			
 		</div>
 		<div class="row">&nbsp;</div>
+
+		<form id="formzoom" name="formzoom" method="post" action="">
+			<input type="hidden" id="form_ID_PROD" name="ID_PROD" value="143071" />
+		</form>
+
 		<div class="row">
-			<div class="col-md-6"> <button class="btn btn-large btn-inverse" type="button">Ajouter au panier</button></div>
+			<div class="col-md-6"> <button class="btn btn-large btn-inverse" type="button" onclick="ajouterPanier();">Ajouter au panier</button></div>
 		</div>
 	</div>
 </div>
