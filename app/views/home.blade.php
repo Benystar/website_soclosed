@@ -15,12 +15,12 @@
 				@if($sales->count() <= 0)						  
 					<p class="well">Vous n'avez pas de vente en cours.<br / >Cliquez ici pour créer une nouvelle ventes en quelques minutes</p>
 				@else
-					@foreach ($sales as $key => $val)
+					@foreach ($sales as $key => $val)						
 						<div class="row">
 							<div class="col-md-2"><img src="{{{asset("assets/img/panier-vente.png")}}}" class="img-polaroid"></div>
 							<div class="col-md-6">
 								<strong>{{{ $val->name }}}</strong><br />
-								<img src="{{{asset("assets/img/icon-chrono.png")}}}">&nbsp;{{{ $val->sale_date }}}
+								<img src="{{{asset("assets/img/icon-chrono.png")}}}">&nbsp; {{ HelperClass::convertDate($val->sale_date) }}
 							</div>						
 							<div class="col-md-2"><a href="{{{ URL::to($val->alias) }}}">Consulter</a></div>
 						</div>

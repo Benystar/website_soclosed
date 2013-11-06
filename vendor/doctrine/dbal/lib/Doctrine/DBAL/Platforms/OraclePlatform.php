@@ -113,22 +113,6 @@ class OraclePlatform extends AbstractPlatform
     /**
      * {@inheritDoc}
      */
-    public function getDateAddHourExpression($date, $hours)
-    {
-        return '(' . $date . '+' . $hours . '/24)';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getDateSubHourExpression($date, $hours)
-    {
-        return '(' . $date . '-' . $hours . '/24)';
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getDateAddDaysExpression($date, $days)
     {
         return '(' . $date . '+' . $days . ')';

@@ -126,7 +126,6 @@ Route::group(array('before' => 'auth'), function()
         return View::make('sale/sale_add_item')->with('sale', $sale);
     });
 
-    //////////////////////////////////////////////
     Route::get('sale_share_init/{alias}', function($alias) {
 
         $sale = Sale::where('alias', '=', $alias)->first();
@@ -139,8 +138,7 @@ Route::group(array('before' => 'auth'), function()
         $sale = Sale::where('alias', '=', $alias)->first();
        
         return View::make('sale/sale_share_update')->with('sale', $sale);
-    });
-    ////////////////////////////////////////////
+    });   
 
     Route::get('display_item/{id}', function($id) {
 
@@ -206,3 +204,13 @@ Route::post('create_sale', 'SaleController@insertSale');
 Route::post('sale_add_item', 'SaleController@addItem');
 Route::post('update_sale_describe', 'SaleController@updateSale');
 Route::post('update_items', 'SaleController@updateItem');
+
+
+
+/*
+|--------------------------------------------------------------------------
+| View composers
+|--------------------------------------------------------------------------
+*/
+
+View::composer('home', 'HomeComposer');
