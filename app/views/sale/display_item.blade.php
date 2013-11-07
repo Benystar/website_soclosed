@@ -2,13 +2,11 @@
 
 @section('content')
 
-<script src="{{{ asset('assets/js/so-closed.js') }}}"></script>
-
+<br />
 <div class="row">
 	<div class="col-md-12 text-right"><img src="{{{asset("assets/img/logo.png")}}}"></div>
 </div>
 
-<br />
 <br />
 
 <div class="row">
@@ -50,7 +48,7 @@
 		<div class="row">&nbsp;</div>
 
 		<form id="formzoom" name="formzoom" method="post" action="">
-			<input type="hidden" id="form_ID_PROD" name="ID_PROD" value="143071" />
+			<input type="hidden" id="form_id_item" name="ID_ITEM" value="{{{ $item->id }}}" />
 		</form>
 
 		<div class="row">

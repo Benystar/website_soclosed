@@ -112,7 +112,7 @@ Route::group(array('before' => 'auth'), function()
 
         // Quand on passe un paramètre "with" à une View, on peut le récupérer tel quel sur la vue
         return View::make('home')->with('sales', $sales);
-    });
+    });   
 
     Route::get('create_sale', function() {
    
@@ -161,10 +161,6 @@ Route::group(array('before' => 'auth'), function()
         return View::make('sale/sale_update_items')->with('sale', $sale);       
     });
 
-    Route::get('update_items/delete/{sale_alias}/{item_id}', 'SaleController@deleteItem');
-
-    Route::get('cart_add_item', array('uses'=>'CartController@addItemToCart'));
-
     Route::get('/{alias}/{create?}', function($alias,$create=null) {
 
         // Comme il est certain qu'il n'y ait qu'un seul résultat, on utilise first()
@@ -182,6 +178,13 @@ Route::group(array('before' => 'auth'), function()
             return Redirect::to('/');
         }        
     });
+
+    Route::get('update_items/delete/{sale_alias}/{item_id}', 'SaleController@deleteItem');
+
+    Route::get('cart_add_item', array('uses'=>'CartController@addItemToCart'));
+    Route::get('cart_remove_item', array('uses'=>'CartController@removeItemToCart'));
+    Route::get('clear_cart', array('uses'=>'CartController@clearCart'));
+    Route::get('get_cart', array('uses'=>'CartController@getCart'));
 
 
 });
