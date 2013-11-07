@@ -163,10 +163,7 @@ Route::group(array('before' => 'auth'), function()
 
     Route::get('update_items/delete/{sale_alias}/{item_id}', 'SaleController@deleteItem');
 
-    Route::get('test_js', function() {
-        echo "test";
-        exit();
-    });
+    Route::get('cart_add_item', array('uses'=>'CartController@addItemToCart'));
 
     Route::get('/{alias}/{create?}', function($alias,$create=null) {
 
@@ -208,8 +205,6 @@ Route::post('create_sale', 'SaleController@insertSale');
 Route::post('sale_add_item', 'SaleController@addItem');
 Route::post('update_sale_describe', 'SaleController@updateSale');
 Route::post('update_items', 'SaleController@updateItem');
-
-
 
 /*
 |--------------------------------------------------------------------------

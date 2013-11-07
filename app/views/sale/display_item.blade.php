@@ -54,7 +54,7 @@
 		</form>
 
 		<div class="row">
-			<div class="col-md-6"> <button class="btn btn-large btn-inverse" type="button" onclick="ajouterPanier();">Ajouter au panier</button></div>
+			<div class="col-md-6"> <button class="btn btn-large btn-inverse" type="button" onclick="addItemToCart();">Ajouter au panier</button></div>
 		</div>
 	</div>
 </div>
