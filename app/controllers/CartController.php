@@ -4,7 +4,9 @@ class CartController extends BaseController {
 
 	public function addItemToCart(){
 
-		$item_id = Input::get('id');
+		//$_SESSION['cart'] = array();
+
+		$item_id = Input::get('id');			
 				
 		if($item_id && !$this->itemExists($item_id)) {
 		    die("Error. Product Doesn't Exist");
@@ -12,8 +14,12 @@ class CartController extends BaseController {
 
 		// test if session array exists
 		$_SESSION['cart'] = array_key_exists('cart', $_SESSION)?$_SESSION['cart']:array();
-
-		$_SESSION['cart'][$item_id]++;
+		
+		if (array_key_exists($item_id, $_SESSION['cart']))
+			$_SESSION['cart'][''.$item_id.'']++;
+		else
+			$_SESSION['cart'][''.$item_id.''] = 1;
+		
 
 		/* Pour retouner un tableau de valeur */
 		//return array( "name"=>"John","time"=>"2pm" );
@@ -49,14 +55,13 @@ class CartController extends BaseController {
 	    return $item != null;
 	}
 
-	public function getCart() {
+	public function insertItemID(){
 
-		if($_SESSION['cart']) {     
-
-		    //iterate through the cart, the $product_id is the key and $quantity is the value
-		    foreach($_SESSION['cart'] as $item_id => $quantity) { 
-
-			}
-		}
 	}
+
+	public function updateItemQuantity(){
+
+	}
+
+
 }

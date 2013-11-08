@@ -270,6 +270,16 @@ class Blueprint {
 	}
 
 	/**
+	* Indicate that the soft delete column should be dropped.
+	*
+	* @return void
+	*/
+	public function dropSoftDeletes()
+	{
+		$this->dropColumn('deleted_at');
+	}
+
+	/**
 	 * Rename the table to a given name.
 	 *
 	 * @param  string  $to
@@ -585,6 +595,18 @@ class Blueprint {
 	public function timestamp($column)
 	{
 		return $this->addColumn('timestamp', $column);
+	}
+
+	/**
+	 * Add nullable creation and update timestamps to the table.
+	 *
+	 * @return void
+	 */
+	public function nullableTimestamps()
+	{
+		$this->timestamp('created_at')->nullable();
+
+		$this->timestamp('updated_at')->nullable();
 	}
 
 	/**
