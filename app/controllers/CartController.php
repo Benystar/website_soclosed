@@ -14,6 +14,11 @@ class CartController extends BaseController {
 
 		// test if session array exists
 		$_SESSION['cart'] = array_key_exists('cart', $_SESSION)?$_SESSION['cart']:array();
+
+		if(!array_key_exists('cart_current_sale_id', $_SESSION)){
+			 $item = Item::where('id','=', $item_id)->first();
+			 $_SESSION['cart_current_sale_id'] = $item->id_sale;
+		}
 		
 		if (array_key_exists($item_id, $_SESSION['cart']))
 			$_SESSION['cart'][''.$item_id.'']++;
@@ -30,13 +35,13 @@ class CartController extends BaseController {
 
 		$item_id = Input::get('id');
 		
-		if($item_id && !itemExists($item_id)) {
+		if($item_id && !$this->itemExists($item_id)) {
 		    die("Error. Product Doesn't Exist");
 		}
 
-		$_SESSION['cart'][$item_id]--; //remove one from the quantity of the product with id $item_id
-        if($_SESSION['cart'][$item_id] == 0)
-        	unset($_SESSION['cart'][$item_id]);
+		$_SESSION['cart'][''.$item_id.'']--; //remove one from the quantity of the product with id $item_id
+        if($_SESSION['cart'][''.$item_id.''] == 0)
+        	unset($_SESSION['cart'][''.$item_id.'']);
 
         return $item_id;			
 	}
@@ -54,14 +59,4 @@ class CartController extends BaseController {
 	    
 	    return $item != null;
 	}
-
-	public function insertItemID(){
-
-	}
-
-	public function updateItemQuantity(){
-
-	}
-
-
 }

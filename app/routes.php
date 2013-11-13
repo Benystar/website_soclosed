@@ -167,6 +167,7 @@ Route::group(array('before' => 'auth'), function()
     });
 
     Route::get('update_items/delete/{sale_alias}/{item_id}', 'SaleController@deleteItem');
+    Route::get('sale_add_item/delete/{sale_alias}/{item_id}', 'SaleController@deleteItemFromCurrentSale');
 
     Route::get('cart_add_item', array('uses'=>'CartController@addItemToCart'));
     Route::get('cart_remove_item', array('uses'=>'CartController@removeItemToCart'));

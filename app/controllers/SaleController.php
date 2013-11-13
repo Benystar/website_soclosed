@@ -119,6 +119,13 @@ class SaleController extends BaseController {
 		return Redirect::to('update_items/'.$sale_alias);
 	}
 
+	public function deleteItemFromCurrentSale($sale_alias, $item_id){
+
+		Item::destroy($item_id);
+
+		return Redirect::to('sale_add_item/'.$sale_alias);
+	}
+
 	public function cart(){
 		return "je suis dans le contrôleur";
 	}

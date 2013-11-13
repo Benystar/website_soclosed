@@ -19,14 +19,12 @@ function addItemToCart() {
 /*
 	Fonction permettant de retirer un article au panier
 */
-function removeItemToCart() {
-	
-	var obj = document.getElementById("form_ID_PROD");
+function removeItemToCart( item_id ) {
 	var URL_ROOT = "http://localhost/website_soclosed/public/";
 
-    $.get(URL_ROOT + 'cart_remove_item', { id: obj.value } ).done(function( data ) {
-		alert( "Le produit " + data + " a bien été retiré du panier" );
-	});
+	document.getElementById(item_id).remove();
+
+    $.get(URL_ROOT + 'cart_remove_item', { id: item_id } );
 
 }
 /*
