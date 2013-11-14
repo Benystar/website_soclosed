@@ -14,18 +14,16 @@ class CartController extends BaseController {
 
 		// test if session array exists
 		$_SESSION['cart'] = array_key_exists('cart', $_SESSION)?$_SESSION['cart']:array();
-
-		if(!array_key_exists('cart_current_sale_id', $_SESSION)){
-			 $item = Item::where('id','=', $item_id)->first();
-			 $_SESSION['cart_current_sale_id'] = $item->id_sale;
-		}
 		
+		// get current sale id
+		$sale = Item::find($item_id)->sale;				
+		$_SESSION['cart_current_sale_alias'] = $sale->alias;
+
 		if (array_key_exists($item_id, $_SESSION['cart']))
 			$_SESSION['cart'][''.$item_id.'']++;
 		else
 			$_SESSION['cart'][''.$item_id.''] = 1;
 		
-
 		/* Pour retouner un tableau de valeur */
 		//return array( "name"=>"John","time"=>"2pm" );
 		return $item_id;	

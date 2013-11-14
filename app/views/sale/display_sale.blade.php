@@ -32,7 +32,7 @@
 	</div>
 	<div class="col-md-9">
 		
-    	@foreach ($sale->items as $key => $val)		    	
+    	@foreach ($items as $key => $val)		    	
 		    <div class="col-md-5">
 			    <div class="col-md-12 thumbnail" style="height:520px; margin-top:20px;">
 				    <div class="text-center">

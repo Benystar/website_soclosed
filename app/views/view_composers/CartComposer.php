@@ -16,7 +16,8 @@ class CartComposer {
 
 			    	$total_amount = $total_amount + $item->price;
 		    	}
-			}			
+			}
+
 		}
 
 		$view->with('tabItems', $tabItems)

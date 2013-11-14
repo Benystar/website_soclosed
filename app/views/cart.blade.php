@@ -57,7 +57,7 @@
 		<tbody>
 			<tr>
 				<td class="text-left" width="25%">
-					<a class="button-small grey-sc rounded3" href="#"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;Continuer mon shopping</a>
+					<a class="button-small grey-sc rounded3" href="{{{ URL::to($_SESSION['cart_current_sale_alias'])}}}"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;Continuer mon shopping</a>
 				</td>
 				<td width="50%"></td>
 				<td class="text-right" width="25%">

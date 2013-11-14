@@ -182,15 +182,18 @@ Route::group(array('before' => 'auth'), function()
     Route::get('/{alias}/{create?}', function($alias,$create=null) {
 
         // Comme il est certain qu'il n'y ait qu'un seul résultat, on utilise first()
-        $sale = Sale::where('alias', '=', $alias)->with('items')->first();
+        $sale = Sale::where('alias', '=', $alias)->first();
+        $items = Item::where('id_sale', '=', $sale->id)->get();        
 
         if($sale != null) {
             // La chaine 21&4 est une chaine prise au hasard qui permet de détecter que l'on vient d'une page de création de vente
             if($create != "21&4"){            
-                return View::make('sale/display_sale')->with('sale', $sale);
+                return View::make('sale/display_sale')->with('sale', $sale)
+                                                      ->with('items', $items);
             }else{    
                 Session::flash('success', 'Vente créée avec succès!');        
-                return View::make('sale/display_sale')->with('sale', $sale);
+                return View::make('sale/display_sale')->with('sale', $sale)
+                                                      ->with('items', $items);
             }
         }else{
             return Redirect::to('/');
