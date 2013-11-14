@@ -53,19 +53,31 @@ body {
    		
 }
 
+/*
 .background-page{
 	background-color:#fbf9fa;	
-}
+}*/
 
 .background-color{
 	background-color:#fbf9fa;
 }
 
-.header-sale{
+.header-sale-section{	
+	color: #FFFFFF;
+	background-color: #4C4C4C;
+    border-radius: 4px;
+    list-style: none outside none;
+    margin-bottom: 20px;
+    padding: 8px 15px;
+}
+
+.header-display-sale{
 	padding-top: 2px;
 	padding-bottom: 2px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	border-radius: 4px;
+    list-style: none outside none;
 	background-color:#4C4C4C;
 	color: #FFFFFF;
 }
@@ -109,44 +121,33 @@ body {
 	border-radius: 4px;
 }
 
+.create-sale{
+	background-color:#FFFFFF;
+	height:300px;
+	border-radius: 4px;
+	border: 1px solid #E3E3E3;
+}
+
 .total_cart{
 	background-color:#FFFFFF;
 	border: 1px solid #DDDDDD;
 }
 
+
 .button-small{
-   word-spacing: 0.25em;
-   text-transform: uppercase;   
-   line-height: 22px;
-   width: 280px;
-   padding: 12px 13px 11px;
-   text-align: center;
-   display: inline-block;
-   margin-top: 5px;
-   margin-bottom: 18px;
-   text-decoration: none;
-}
-.button-small:visited{
-      color: #fff;
-}
-.button-small{
+	word-spacing: 0.25em;
+	line-height: 22px;
+    width: 280px;
+    padding: 12px 13px 11px;
+    text-align: center;
     padding: 6px 12px 5px;
-    font-size: 12px;
+    font-size: 14px;
     color: #fff;
-    text-shadow: none;
+    margin-top: 5px;
+    margin-bottom: 18px;
+    display: inline-block;
 }
-.button-small:hover{
-    color: rgba(255,255,255, 0.75);
-    text-decoration: none;
-    -webkit-box-shadow:inset 0 10px 20px rgba(255,255,255, 0.10);
-    -moz-box-shadow: inset 0 10px 20px rgba(255,255,255, 0.10);
-    box-shadow: inset 0 10px 20px rgba(255,255,255, 0.10);
-}
-.button-small:active {
-    -webkit-box-shadow: inset 0 2px 2px rgba(0,0,0, 0.3), inset 0 10px 20px rgba(0,0,0, 0.08);
-    -moz-box-shadow: inset 0 2px 2px rgba(0,0,0, 0.3), inset 0 10px 20px rgba(0,0,0, 0.08);
-    box-shadow: inset 0 2px 2px rgba(0,0,0, 0.3), inset 0 10px 20px rgba(0,0,0, 0.08);
-}
+
 .rounded3 {
 	-webkit-border-radius: 3px;
     -moz-border-radius: 3px;
@@ -161,6 +162,18 @@ body {
     background: #FFFFFF;
     border: 1px solid #4C4C4C;
     color: #4C4C4C !important;  
+}
+
+.spacer20{
+	margin-top:20px;
+}
+
+.spacer30{
+	margin-top:30px;
+}
+
+.background-grey-sc{
+	background-color:#4C4C4C;
 }
 
 

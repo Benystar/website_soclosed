@@ -47,7 +47,6 @@
 	                        <li><a href="{{{ URL::to('cart') }}}">Mon panier</a></li>
 	                        <li><a href="{{{ URL::to('logout') }}}">Déconnexion</a></li>
                         @else
-	                        <li><a href="{{{ URL::to('login') }}}">Login</a></li>
 	                        <li><a href="{{{ URL::to('subscribe') }}}">S'inscrire</a></li>
                         @endif
                     </ul>				

@@ -7,8 +7,9 @@
 <br />
 <ol class="breadcrumb">
   <li class="active">Mon panier</li>
-  <li class="inactive">Identification</li>
+  <li class="inactive">Coordonnées</li>
   <li class="inactive">Paiement</li>
+  <li class="inactive">Récapitulatif</li>
 </ol>
 
 @if(count($tabItems) > 0)
@@ -56,11 +57,11 @@
 		<tbody>
 			<tr>
 				<td class="text-left" width="25%">
-					<a class="button-small grey-sc rounded3" href="#"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;<strong>Continuer mon shopping</strong></a>
+					<a class="button-small grey-sc rounded3" href="#"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;&nbsp;Continuer mon shopping</a>
 				</td>
 				<td width="50%"></td>
 				<td class="text-right" width="25%">
-					<a class="button-small purple-sc rounded3" href="#"><strong>Passer votre commande</strong>&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
+					<a class="button-small purple-sc rounded3" href="{{{ URL::to('details')}}}">Passer votre commande&nbsp;&nbsp;<span class="glyphicon glyphicon-chevron-right"></span></a>
 				</td>
 			</tr>
 		</tbody>

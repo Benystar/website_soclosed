@@ -39,7 +39,7 @@
 		{{ Form::close() }}
 
 	</div>
-	<div class="col-md-4 background-img-sale-describe">&nbsp;</div>	
+	<div class="col-md-4 background-grey-sc" style="height:415px">&nbsp;</div>	
 </div>
 
 <script type="text/javascript">

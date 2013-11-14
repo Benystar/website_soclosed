@@ -125,8 +125,4 @@ class SaleController extends BaseController {
 
 		return Redirect::to('sale_add_item/'.$sale_alias);
 	}
-
-	public function cart(){
-		return "je suis dans le contrôleur";
-	}
 }

@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('content')
-
+<br />
 <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <img src="{{{ asset('assets/img/logo_page_accueil.png' )}}}" />
@@ -30,7 +30,7 @@
                     <input class="form-control" type="password" name="password" id="password" value="{{ Input::old('password') }}" />
                 </p>
                 <!-- submit button -->
-                <button type="submit" class="btn btn-lg btn-primary">Login</button>
+                <button type="submit" class="btn btn-large btn-primary">Se connecter</button>
             {{ Form::close() }}
         </div>
     </div>

@@ -101,6 +101,7 @@ Route::get('login/fb/callback', function() {
     return Redirect::to('home')->with('message', 'Logged in with Facebook');
 });
 
+
 //------------------------------------------------------------------------------------------------
 // Contient toutes les routes vers les pages nécessitant d'être authentifiées --------------------
 //------------------------------------------------------------------------------------------------
@@ -164,6 +165,11 @@ Route::group(array('before' => 'auth'), function()
     Route::get('cart', function() {
         
         return View::make('cart');       
+    });
+
+    Route::get('summary', function() {
+        
+        return View::make('summary');       
     });
 
     Route::get('update_items/delete/{sale_alias}/{item_id}', 'SaleController@deleteItem');

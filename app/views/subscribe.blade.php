@@ -2,12 +2,14 @@
 
 @section('content')
 
+@include('header')
+
 @if (Session::has('login_errors'))
     <span class="error">Login ou mot de passe incorrect.</span>
 @endif
 
 <div class="row">
-	<div class="col-md-3 col-md-offset-1" style="margin-top: 20px;">
+	<div class="col-md-3" style="margin-top: 20px;">
 	{{ Form::open(array('action' => 'SubscribeUserController@insertUser')) }}
 
 
