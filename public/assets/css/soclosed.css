@@ -176,4 +176,7 @@ body {
 	background-color:#4C4C4C;
 }
 
+.address-area-active{
+	border: 1px solid #4C4C4C;
+}
 

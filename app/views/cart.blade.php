@@ -3,8 +3,7 @@
 @section('content')
 
 @include('header')
-<br />
-<br />
+
 <ol class="breadcrumb">
   <li class="active">Mon panier</li>
   <li class="inactive">Coordonnées</li>

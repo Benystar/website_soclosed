@@ -39,3 +39,17 @@ function clearCart() {
 	});
 
 }
+
+function delivery_checkbox_event() {
+	if(document.getElementById('optionsRadios2').checked  == true) {
+		document.getElementById('recipient-custom').disabled = false;
+		document.getElementById('address-custom').disabled = false;
+		document.getElementById('zip-code-custom').disabled = false;
+		document.getElementById('city-custom').disabled = false;
+	}else{
+		document.getElementById('recipient-custom').disabled = true;
+		document.getElementById('address-custom').disabled = true;
+		document.getElementById('zip-code-custom').disabled = true;
+		document.getElementById('city-custom').disabled = true;
+	}
+}

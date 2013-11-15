@@ -167,13 +167,26 @@ Route::group(array('before' => 'auth'), function()
         return View::make('cart');       
     });
 
-    Route::get('summary', function() {
+     Route::get('details', function() {
         
+        return View::make('details');       
+    });
+
+    Route::post('payment', function() {
+
+        $_SESSION['info-order'] = HelperClass::getOrderInformations(Input::all());             
+        
+        return View::make('payment');       
+    });
+
+    Route::get('summary', function() {
+
         return View::make('summary');       
     });
 
     Route::get('update_items/delete/{sale_alias}/{item_id}', 'SaleController@deleteItem');
     Route::get('sale_add_item/delete/{sale_alias}/{item_id}', 'SaleController@deleteItemFromCurrentSale');
+    Route::get('handle-order', 'OrderController@insertOrder');
 
     Route::get('cart_add_item', array('uses'=>'CartController@addItemToCart'));
     Route::get('cart_remove_item', array('uses'=>'CartController@removeItemToCart'));
@@ -182,8 +195,8 @@ Route::group(array('before' => 'auth'), function()
     Route::get('/{alias}/{create?}', function($alias,$create=null) {
 
         // Comme il est certain qu'il n'y ait qu'un seul résultat, on utilise first()
-        $sale = Sale::where('alias', '=', $alias)->first();
-        $items = Item::where('id_sale', '=', $sale->id)->get();        
+        $sale   = Sale::where('alias', '=', $alias)->first();
+        $items  = Item::where('id_sale', '=', $sale->id)->get();        
 
         if($sale != null) {
             // La chaine 21&4 est une chaine prise au hasard qui permet de détecter que l'on vient d'une page de création de vente
