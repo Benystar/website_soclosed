@@ -2,12 +2,13 @@
 
 @section('content')
 
-@include('header')
-<br />
-<br />
-
+<div class="col-md-12 spacer10">&nbsp;</div>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1 text-left"><img src="{{{asset("assets/img/logo.png")}}}"></div>
+</div>
+<div class="col-md-12 spacer10">&nbsp;</div>
 <div class="row">	
-	<div class="col-md-10">		
+	<div class="col-md-10 col-md-offset-1">		
 	    <div class="row">
 		    <div class="col-md-8">
 			    <div class="col-md-12 header-sale-section">Mes ventes en cours</div>
@@ -23,20 +24,24 @@
 							</div>						
 							<div class="col-md-2"><a href="{{{ URL::to($val->alias) }}}">Consulter</a></div>
 						</div>
-						<div class="col-md-12 spacer20">&nbsp;</div>
+						<div class="col-md-12 spacer20">{{ Illuminage::thumb("assets/img/panier-vente.png", 500, 500) }}</div>
+						<div class="col-md-12 spacer20"><img src="http://localhost/website_soclosed/public{{Timthumb::link('assets/img/panier-vente.png',300,200)}}"></div>
 					@endforeach
 				@endif				
-				<div class="col-md-12 spacer30">&nbsp;</div>
+				
 				<div class="col-md-12 header-sale-section">Mes ventes terminées</div>
 				<p>Vous n'avez pas de vente terminée.</p>			
 		    </div>
-		    <div class="col-md-3 col-md-offset-1 create-sale text-center">
-		    	<br />
-			    <h4>Créer une vente</h4>
-				<p>Envie de créer une nouvelle vente? C'est dans cette section que ça se passe</p>
-				<p class="text-center">
-					<a class="btn btn-primary" href="{{{ URL::to('create_sale') }}}">Créer »</a>
-				</p>
+		    <div class="col-md-3 col-md-offset-1 text-center">
+		    	<div class="col-md-12 create-sale">
+			    	<br />
+				    <h4>Créer une vente</h4>
+					<p>Envie de créer une nouvelle vente? C'est dans cette section que ça se passe</p>
+					<p class="text-center">
+						<a class="btn btn-primary" href="{{{ URL::to('create_sale') }}}">Créer »</a>
+					</p>
+				</div>
+				<div class="col-md-12 create-sale-draw-area"></div>
 		    </div>
 	    </div>
 	</div>		 

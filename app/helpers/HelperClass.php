@@ -29,6 +29,13 @@ class HelperClass {
 
     	return $tabInfoOrder;
 	}
+
+	public static function resizeImage($img_url, $height, $width, $crop) {
+		
+		$url_image_resize = asset("assets/scripts/timthumb.php")."?src=".$img_url."&h=".$height."&w=".$width."&zc=".$crop;
+
+		return $url_image_resize;
+	}
 }
 
 ?>

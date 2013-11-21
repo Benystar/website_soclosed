@@ -184,6 +184,11 @@ Route::group(array('before' => 'auth'), function()
         return View::make('summary');       
     });
 
+    Route::get('twitter', function()
+    {
+        return Twitter::postTweet(array('status' => 'Laravel is beautiful', 'format' => 'json'));
+    });
+
     Route::get('update_items/delete/{sale_alias}/{item_id}', 'SaleController@deleteItem');
     Route::get('sale_add_item/delete/{sale_alias}/{item_id}', 'SaleController@deleteItemFromCurrentSale');
     Route::get('handle-order', 'OrderController@insertOrder');

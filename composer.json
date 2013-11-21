@@ -1,7 +1,9 @@
 {
 	"require": {
 		"laravel/framework": "4.0.*",
-		"facebook/php-sdk": "dev-master"		
+		"facebook/php-sdk": "dev-master",
+		"anahkiasen/illuminage": "dev-master",
+		"spescina/timthumb": "dev-master"			
 	},
 	"autoload": {
 		"classmap": [
