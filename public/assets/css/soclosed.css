@@ -198,3 +198,59 @@ body {
 
  }
 
+  .background-home-image{
+    display: block;   
+    background-image: url('../img/packshot-home-original.jpg');
+    height: 500px; 
+
+ }
+
+
+.index-text-h1 {   
+    color: #FFFFFF;   
+    font-size: 1.9rem; 
+    margin-top: 60px;
+    font-style: italic;
+   
+}
+
+.index-text-h2 {   
+    color: #FFFFFF;   
+    font-size: 2.3rem;
+    font-weight: bold;   
+    margin-top: 25px;
+  	font-family: 'Oxygen', sans-serif;
+   
+}
+
+.index-button {
+	margin-top:60px;
+}
+
+.index-font-row {
+	background-image: url('../img/trendi_photo_boutique_index1.jpg');
+}
+
+.index-step {
+	color: #FFFFFF;   
+    font-size: 2.5rem;
+    font-weight: bold; 
+    color:#4C4C4C; 
+    margin-top: 25px;
+  	font-family: 'Signika Negative', sans-serif;
+}
+
+.index-background-area-dark {
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.background-search-engine{
+	height: 70px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-bottom: 10px;
+	border-radius: 4px;
+    list-style: none outside none;
+	background-color:#F0F0F0;
+	color: #4C4C4C;
+}

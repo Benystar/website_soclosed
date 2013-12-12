@@ -300,8 +300,9 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
   line-height: 1.428571429;
   color: #333333;
   background-color: #ffffff;
@@ -324,18 +325,18 @@ textarea {
 }
 
 a {
-  color: #428bca;
+  color: #4C4C4C;
   text-decoration: none;
 }
 
 a:hover,
 a:focus {
-  color: #2a6496;
+  color: #4C4C4C;
   text-decoration: underline;
 }
 
 a:focus {
-  outline: thin dotted #333;
+  outline: thin dotted #4C4C4C;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2081,9 +2082,9 @@ fieldset[disabled] .btn-default.active {
 .btn-primary {
   color: #ffffff;
   /*background-color: #428bca;*/
-  background-color: #4C4C4C;
+  background-color: #46BDDD;
  /*border-color: #357ebd;*/
- border-color:#4C4C4C;
+ border-color:#46BDDD;
 }
 
 .btn-primary:hover,
@@ -2312,7 +2313,7 @@ fieldset[disabled] .btn-link {
 
 .btn-link:hover,
 .btn-link:focus {
-  color: #2a6496;
+  color: #4C4C4C;
   text-decoration: underline;
   background-color: transparent;
 }
@@ -3272,7 +3273,7 @@ input[type="button"].btn-block {
 .dropdown-menu > li > a:focus {
   color: #ffffff;
   text-decoration: none;
-  background-color: #428bca;
+  background-color: #46BDDD;
 }
 
 .dropdown-menu > .active > a,
@@ -3280,7 +3281,7 @@ input[type="button"].btn-block {
 .dropdown-menu > .active > a:focus {
   color: #ffffff;
   text-decoration: none;
-  background-color: #428bca;
+  background-color: #46BDDD;
   outline: 0;
 }
 
@@ -4005,8 +4006,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav a:hover .caret {
-  border-top-color: #2a6496;
-  border-bottom-color: #2a6496;
+  border-top-color: #4C4C4C;
+  border-bottom-color: #4C4C4C;
 }
 
 .nav-tabs .dropdown-menu {
@@ -4018,10 +4019,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   z-index: 1000;
-  min-height: 50px;
+  min-height: 100px;
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
+
+.tnav .navbar .container { height: 100px; }
 
 .navbar:before,
 .navbar:after {
@@ -4494,8 +4497,8 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #4C4C4C;
-  border-color: #080808;
+  background-color: #ffffff;
+  border-color: #ffffff;
 }
 
 .navbar-inverse .navbar-brand {

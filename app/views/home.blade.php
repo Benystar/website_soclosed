@@ -1,16 +1,14 @@
 @extends('layouts.default')
 
 @section('content')
+<div class="spacer20"></div>
 
-<div class="col-md-12 spacer10">&nbsp;</div>
 <div class="row">
-	<div class="col-md-10 col-md-offset-1 text-left"><img src="{{{asset("assets/img/logo.png")}}}"></div>
-</div>
-<div class="col-md-12 spacer10">&nbsp;</div>
-<div class="row">	
+	
 	<div class="col-md-10 col-md-offset-1">		
-	    <div class="row">
+	    <div class="row">	    	
 		    <div class="col-md-8">
+		    	<div class="col-md-12 header-sale-section background-search-engine">Moteur de recherche</div>
 			    <div class="col-md-12 header-sale-section">Mes ventes en cours</div>
 			    @if($sales->count() <= 0)						  
 					<p>Vous n'avez pas de vente en cours.<br / >Cliquez ici pour créer une nouvelle ventes en quelques minutes</p>
@@ -41,7 +39,7 @@
 						<a class="btn btn-primary" href="{{{ URL::to('create_sale') }}}">Créer »</a>
 					</p>
 				</div>
-				<div class="col-md-12 create-sale-draw-area"></div>
+				
 		    </div>
 	    </div>
 	</div>		 

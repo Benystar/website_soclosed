@@ -2,9 +2,7 @@
 
 @section('content')
 
-@include('header')
-<br />
-<br />
+<div class="spacer10"></div>
 <div class="row">
 	<div class="col-md-4 col-md-offset-2 background-color" style="padding-left: 35px;">
 

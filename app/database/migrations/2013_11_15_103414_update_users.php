@@ -16,8 +16,12 @@ class UpdateUsers extends Migration {
 
 	public function down()
 	{
-		$table->dropColumn('address');
-		$table->dropColumn('zip_code');
-		$table->dropColumn('city');
+
+		Schema::table('users', function($table)
+		{
+		   	$table->dropColumn('address');
+			$table->dropColumn('zip_code');
+			$table->dropColumn('city');
+		});
 	}
 }

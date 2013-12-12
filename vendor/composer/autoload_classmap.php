@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AlterSale' => $baseDir . '/app/database/migrations/2013_09_20_093018_alter_sale.php',
+    'AlterSales' => $baseDir . '/app/database/migrations/2013_12_12_141945_alter_sales.php',
     'AuthorizedController' => $baseDir . '/app/controllers/AuthorizedController.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'BaseFacebook' => $vendorDir . '/facebook/php-sdk/src/base_facebook.php',
@@ -774,6 +775,7 @@ return array(
     'Monolog\\Processor\\PsrLogMessageProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Processor/PsrLogMessageProcessor.php',
     'Monolog\\Processor\\UidProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Processor/UidProcessor.php',
     'Monolog\\Processor\\WebProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Processor/WebProcessor.php',
+    'Monolog\\Registry' => $vendorDir . '/monolog/monolog/src/Monolog/Registry.php',
     'Normalizer' => $vendorDir . '/patchwork/utf8/class/Normalizer.php',
     'Order' => $baseDir . '/app/models/Order.php',
     'OrderController' => $baseDir . '/app/controllers/OrderController.php',
@@ -1052,6 +1054,7 @@ return array(
     'Predis\\Command\\PubSubSubscribeByPattern' => $vendorDir . '/predis/predis/lib/Predis/Command/PubSubSubscribeByPattern.php',
     'Predis\\Command\\PubSubUnsubscribe' => $vendorDir . '/predis/predis/lib/Predis/Command/PubSubUnsubscribe.php',
     'Predis\\Command\\PubSubUnsubscribeByPattern' => $vendorDir . '/predis/predis/lib/Predis/Command/PubSubUnsubscribeByPattern.php',
+    'Predis\\Command\\RawCommand' => $vendorDir . '/predis/predis/lib/Predis/Command/RawCommand.php',
     'Predis\\Command\\ScriptedCommand' => $vendorDir . '/predis/predis/lib/Predis/Command/ScriptedCommand.php',
     'Predis\\Command\\ServerBackgroundRewriteAOF' => $vendorDir . '/predis/predis/lib/Predis/Command/ServerBackgroundRewriteAOF.php',
     'Predis\\Command\\ServerBackgroundSave' => $vendorDir . '/predis/predis/lib/Predis/Command/ServerBackgroundSave.php',
@@ -1348,6 +1351,7 @@ return array(
     'Symfony\\Component\\Debug\\ErrorHandler' => $vendorDir . '/symfony/debug/Symfony/Component/Debug/ErrorHandler.php',
     'Symfony\\Component\\Debug\\ExceptionHandler' => $vendorDir . '/symfony/debug/Symfony/Component/Debug/ExceptionHandler.php',
     'Symfony\\Component\\Debug\\Exception\\ContextErrorException' => $vendorDir . '/symfony/debug/Symfony/Component/Debug/Exception/ContextErrorException.php',
+    'Symfony\\Component\\Debug\\Exception\\DummyException' => $vendorDir . '/symfony/debug/Symfony/Component/Debug/Exception/DummyException.php',
     'Symfony\\Component\\Debug\\Exception\\FatalErrorException' => $vendorDir . '/symfony/debug/Symfony/Component/Debug/Exception/FatalErrorException.php',
     'Symfony\\Component\\Debug\\Exception\\FlattenException' => $vendorDir . '/symfony/debug/Symfony/Component/Debug/Exception/FlattenException.php',
     'Symfony\\Component\\DomCrawler\\Crawler' => $vendorDir . '/symfony/dom-crawler/Symfony/Component/DomCrawler/Crawler.php',

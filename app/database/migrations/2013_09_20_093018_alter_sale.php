@@ -26,9 +26,12 @@ class AlterSale extends Migration {
 	 */
 	public function down()
 	{
-		$table->dropIndex('sales_alias_index');
-		$table->dropColumn('alias');
-		$table->dropColumn('id_user');
+		Schema::table('sales', function($table)
+		{
+			$table->dropIndex('sales_alias_index');
+			$table->dropColumn('alias');
+			$table->dropColumn('id_user');
+		});
 	}
 
 }
